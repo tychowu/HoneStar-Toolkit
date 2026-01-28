@@ -25,7 +25,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen pb-32">
+    <div className="min-h-screen flex flex-col">
       {/* Navigation Header */}
       <nav className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -41,13 +41,13 @@ const App: React.FC = () => {
           <div className="flex bg-slate-100 p-1 rounded-xl">
             <button 
               onClick={() => setView('GRID')}
-              className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${view === 'GRID' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'}`}
+              className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${view === 'GRID' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
             >
               计划库
             </button>
             <button 
               onClick={() => setView('COMPARE')}
-              className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${view === 'COMPARE' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'}`}
+              className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${view === 'COMPARE' ? 'bg-white shadow-sm text-blue-600' : 'text-slate-500 hover:text-slate-700'}`}
             >
               方案对比
             </button>
@@ -55,17 +55,17 @@ const App: React.FC = () => {
         </div>
       </nav>
 
-      {/* Hero Section with Scoped Background */}
+      {/* Hero Section */}
       {view !== 'QUIZ' && (
         <header className="relative pt-20 pb-12 px-6 overflow-hidden">
-          {/* Subtle Watermark Background only in Header */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-[0.03] pointer-events-none z-0">
             <Icons.Logo className="w-full h-full text-slate-900" />
           </div>
 
           <div className="max-w-7xl mx-auto text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] font-bold uppercase tracking-widest mb-6 border border-blue-100 animate-pulse">
-              2025 新人招募专属工具
+            {/* Updated badge: text-sm (increased size) and 2026 title */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-sm font-bold uppercase tracking-widest mb-6 border border-blue-100 animate-pulse">
+              2026财务计划选择器
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
               开启您的<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">财富管理事业</span>
@@ -100,12 +100,12 @@ const App: React.FC = () => {
         </header>
       )}
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 relative z-10">
+      {/* Main Content - Updated with dynamic grid columns */}
+      <main className="max-w-7xl mx-auto px-6 relative z-10 flex-grow">
         {view === 'QUIZ' ? (
           <Quiz onComplete={handleQuizComplete} onCancel={() => setView('GRID')} />
         ) : view === 'GRID' ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 animate-in fade-in duration-500">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8 animate-in fade-in duration-500 pb-20">
             {filteredPlans.length > 0 ? (
               filteredPlans.map(plan => (
                 <PlanCard key={plan.id} plan={plan} onClick={setSelectedPlan} />
@@ -119,11 +119,11 @@ const App: React.FC = () => {
             )}
           </div>
         ) : (
-          <div className="overflow-x-auto bg-white rounded-3xl shadow-sm border border-slate-100 animate-in fade-in duration-500">
+          <div className="overflow-x-auto bg-white rounded-3xl shadow-sm border border-slate-100 animate-in fade-in duration-500 mb-20">
             <table className="w-full min-w-[1000px] text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-100">
-                  <th className="p-6 text-sm font-bold text-slate-900 sticky left-0 bg-slate-50 z-10 shadow-[2px_0_5px_rgba(0,0,0,0.02)]">属性字段</th>
+                  <th className="p-6 text-sm font-bold text-slate-900 sticky left-0 bg-slate-50 z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">属性字段</th>
                   {PLANS.map(p => (
                     <th key={p.id} className="p-6 text-sm font-bold text-slate-900 border-l border-slate-100 min-w-[240px]">
                       <div className="flex items-center gap-2">
@@ -136,23 +136,23 @@ const App: React.FC = () => {
               </thead>
               <tbody className="text-sm">
                 <tr className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
-                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10 shadow-[2px_0_5px_rgba(0,0,0,0.02)]">受众定位</td>
+                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">受众定位</td>
                   {PLANS.map(p => <td key={p.id} className="p-6 text-slate-600 leading-relaxed border-l border-slate-50">{p.audience}</td>)}
                 </tr>
                 <tr className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
-                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10 shadow-[2px_0_5px_rgba(0,0,0,0.02)]">准入门槛</td>
+                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">准入门槛</td>
                   {PLANS.map(p => <td key={p.id} className="p-6 text-slate-600 leading-relaxed border-l border-slate-50 whitespace-pre-line">{p.qualification}</td>)}
                 </tr>
                 <tr className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
-                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10 shadow-[2px_0_5px_rgba(0,0,0,0.02)]">财务资助</td>
+                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">财务资助</td>
                   {PLANS.map(p => <td key={p.id} className="p-6 text-slate-600 leading-relaxed border-l border-slate-50 whitespace-pre-line">{p.details.funding}</td>)}
                 </tr>
                 <tr className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
-                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10 shadow-[2px_0_5px_rgba(0,0,0,0.02)]">业绩要求</td>
+                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">业绩要求</td>
                   {PLANS.map(p => <td key={p.id} className="p-6 text-slate-600 leading-relaxed border-l border-slate-50 whitespace-pre-line">{p.details.performance}</td>)}
                 </tr>
                 <tr>
-                  <td className="p-6 font-bold text-blue-700 sticky left-0 bg-blue-50/30 z-10 shadow-[2px_0_5px_rgba(0,0,0,0.02)]">风险提示</td>
+                  <td className="p-6 font-bold text-blue-700 sticky left-0 bg-blue-50/30 z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">风险提示</td>
                   {PLANS.map(p => <td key={p.id} className="p-6 text-blue-600 font-medium leading-relaxed border-l border-slate-50 bg-blue-50/10 whitespace-pre-line">{p.details.clawback}</td>)}
                 </tr>
               </tbody>
@@ -164,45 +164,17 @@ const App: React.FC = () => {
       {/* Floating UI */}
       {selectedPlan && <PlanDetails plan={selectedPlan} onClose={() => setSelectedPlan(null)} />}
       
-      {/* Footer */}
-      <footer className="mt-20 py-16 border-t border-slate-100 bg-white/50 backdrop-blur-sm relative z-10">
+      {/* Footer Cleanup: Removed logo/title, update year, ensure low height */}
+      <footer className="mt-auto py-8 border-t border-slate-100 bg-white/80 backdrop-blur-sm relative z-10">
         <div className="max-w-7xl mx-auto px-6">
-           <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-8 mb-12">
-             <div className="max-w-xs">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center text-white p-1.5 shadow-md">
-                    <Icons.Logo className="w-full h-full" />
-                  </div>
-                  <span className="font-bold text-slate-900 tracking-tight">诚星招募 Pro</span>
-                </div>
-                <p className="text-sm text-slate-400 leading-relaxed">
-                  诚星区域星火家族专属数字工具，致力于用科技助力每一位代理人的职业腾飞。
-                </p>
-             </div>
-             <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
-                <div className="space-y-4">
-                  <h4 className="font-bold text-slate-900 text-sm">新人频道</h4>
-                  <ul className="text-sm text-slate-500 space-y-2">
-                    <li><a href="#" className="hover:text-blue-600 transition-colors">入职必读</a></li>
-                    <li><a href="#" className="hover:text-blue-600 transition-colors">财务计划概览</a></li>
-                  </ul>
-                </div>
-                <div className="space-y-4">
-                  <h4 className="font-bold text-slate-900 text-sm">成长支持</h4>
-                  <ul className="text-sm text-slate-500 space-y-2">
-                    <li><a href="#" className="hover:text-blue-600 transition-colors">星火学院</a></li>
-                    <li><a href="#" className="hover:text-blue-600 transition-colors">MDRT 路径</a></li>
-                  </ul>
-                </div>
-             </div>
-           </div>
-           <div className="pt-8 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="text-slate-400 text-xs font-medium">
-              © 2025 诚星区域 @ 星火家族. 保留所有权利.
+              © 2026 诚星区域 @ 星火家族. 保留所有权利.
             </div>
             <div className="flex gap-6 text-xs font-bold text-slate-400">
-              <a href="#" className="hover:text-slate-600 transition-colors">隐私政策</a>
-              <a href="#" className="hover:text-slate-600 transition-colors">法律声明</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">隐私政策</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">法律声明</a>
+              <a href="#" className="hover:text-blue-600 transition-colors">星火学院</a>
             </div>
           </div>
         </div>

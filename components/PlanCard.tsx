@@ -13,7 +13,8 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onClick }) => {
       onClick={() => onClick(plan)}
       className="group relative bg-white rounded-3xl p-6 shadow-sm border border-slate-100 cursor-pointer overflow-hidden flex flex-col h-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
     >
-      <div className={`absolute top-0 right-0 w-32 h-32 -mr-10 -mt-10 rounded-full opacity-10 transform group-hover:scale-125 transition-transform duration-500 ${plan.decorColor}`} />
+      {/* Increased size of the decorative circle as previously requested */}
+      <div className={`absolute top-0 right-0 w-48 h-48 -mr-16 -mt-16 rounded-full opacity-10 transform group-hover:scale-110 transition-transform duration-500 ${plan.decorColor}`} />
       
       <div className="flex justify-between items-start mb-4 relative z-10">
         <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${plan.color}`}>

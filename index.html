@@ -13,29 +13,6 @@
             background-color: #fafbfc;
         }
         
-        /* Background Logo Watermark with 50% Transparency */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            width: 800px;
-            height: 800px;
-            transform: translate(-50%, -50%);
-            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="black"><path d="M48,5 L48,42 L52,42 L52,5 L50,0 Z" /><path d="M48,5 L38,38 L48,42 Z" opacity="0.8" /><path d="M52,5 L62,38 L52,42 Z" opacity="0.8" /><path d="M48,95 L48,58 L52,58 L52,95 L50,100 Z" /><path d="M48,95 L38,62 L48,58 Z" opacity="0.8" /><path d="M52,95 L62,62 L52,58 Z" opacity="0.8" /><path d="M5,48 L42,48 L42,52 L5,52 L0,50 Z" /><path d="M5,48 L38,38 L42,48 Z" opacity="0.8" /><path d="M5,52 L38,62 L42,52 Z" opacity="0.8" /><path d="M95,48 L58,48 L58,52 L95,52 L100,50 Z" /><path d="M95,48 L62,38 L58,48 Z" opacity="0.8" /><path d="M95,52 L62,62 L58,52 Z" opacity="0.8" /></svg>');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: contain;
-            opacity: 0.05; /* Visual 50% transparency on white background is usually very high; setting to a subtle level that looks like a watermark. For literal 50% opacity of the black ink, set to 0.5, but 0.05 is standard for watermarks. Keeping it subtle. */
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        /* If literal 50% is required despite readability: */
-        .high-opacity-bg::before {
-            opacity: 0.5 !important;
-        }
-
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -65,7 +42,7 @@
 }
 </script>
 </head>
-<body class="text-slate-900 high-opacity-bg">
+<body class="text-slate-900">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
 </body>

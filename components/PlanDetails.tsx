@@ -11,73 +11,163 @@ interface PlanDetailsProps {
 const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
   const [showSource, setShowSource] = useState(false);
 
-  // OCR Source Content for T120 (Page 1 of PDF)
+  // 全面复刻 T120 PDF 第 1 页内容
   const t120Source = (
-    <div className="space-y-6 text-slate-700">
-      <section>
-        <h4 className="font-bold text-slate-900 border-b pb-2 mb-3">1. 計劃生效日期</h4>
-        <p className="text-xs leading-relaxed">1.1. 由2025年4月1日起生效</p>
-        <p className="text-xs leading-relaxed">1.2. 申請人只可選擇以下第5或6條業績花紅財務計劃或季度花紅財務預支計劃的其中一項</p>
-      </section>
-      
-      <section>
-        <h4 className="font-bold text-slate-900 border-b pb-2 mb-3">5. 業績花紅財務計劃 (PB) (T120)</h4>
-        <div className="overflow-x-auto">
-          <table className="w-full text-[10px] border-collapse border border-slate-200">
-            <thead className="bg-slate-50">
-              <tr>
-                <th className="border p-1">對數期</th>
-                <th className="border p-1">PB 級別</th>
-                <th className="border p-1">淨銷售額 (HKD)</th>
-                <th className="border p-1">H&P (HKD)</th>
-                <th className="border p-1">花紅金額 (HKD)</th>
-              </tr>
-            </thead>
-            <tbody>
-              {[
-                { level: '(a)', sales: '>=52萬', hp: '>=7.8萬', bonus: '60,000' },
-                { level: '(b)', sales: '>=65萬', hp: '>=9.75萬', bonus: '80,000' },
-                { level: '(c)', sales: '>=91萬', hp: '>=13.65萬', bonus: '120,000' },
-                { level: '(d)', sales: '>=130萬', hp: '>=19.5萬', bonus: '180,000' },
-                { level: '(e)', sales: '>=195萬', hp: '>=29.25萬', bonus: '270,000' },
-              ].map((row, i) => (
-                <tr key={i} className="text-center">
-                  {i === 0 && <td rowSpan={5} className="border p-1">第1-12个月</td>}
-                  <td className="border p-1">{row.level}</td>
-                  <td className="border p-1">{row.sales}</td>
-                  <td className="border p-1">{row.hp}</td>
-                  <td className="border p-1 font-bold">{row.bonus}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <div className="text-[11px] md:text-xs text-slate-800 leading-relaxed font-serif">
+      <div className="flex justify-between items-start mb-6 border-b-2 border-slate-900 pb-2">
+        <h1 className="text-lg md:text-xl font-bold">全民財務預支計劃之計劃條文</h1>
+        <div className="text-right">
+          <div className="text-[10px] font-bold text-red-600">PRUDENTIAL</div>
+          <div className="text-[10px] font-bold text-red-600 tracking-tighter leading-none">保 誠 保 險</div>
         </div>
-        <p className="mt-3 text-[10px] text-slate-500">* 淨保單數目需 ≥20，續保率需 ≥85%</p>
-      </section>
+      </div>
 
-      <section>
-        <h4 className="font-bold text-slate-900 border-b pb-2 mb-3">5.2. 發放比例</h4>
-        <div className="overflow-x-auto">
-          <table className="w-full text-[10px] border-collapse border border-slate-200 text-center">
-            <thead className="bg-slate-50">
-              <tr>
-                <th className="border p-1">H&P 對數要求</th>
-                <th className="border p-1">淨保單數目要求</th>
-                <th className="border p-1">發放比例</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td className="border p-1">達標</td><td className="border p-1">達標</td><td className="border p-1 font-bold">100%</td></tr>
-              <tr><td className="border p-1">未達標</td><td className="border p-1">達標</td><td className="border p-1">80%</td></tr>
-              <tr><td className="border p-1">達標</td><td className="border p-1">未達標</td><td className="border p-1">50%</td></tr>
-              <tr><td className="border p-1">未達標</td><td className="border p-1">未達標</td><td className="border p-1">40%</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+      <div className="space-y-5">
+        <section>
+          <h2 className="font-bold mb-1">1. 計劃生效日期</h2>
+          <div className="pl-4 space-y-0.5">
+            <p>1.1. 由2025年4月1日起生效</p>
+            <p>1.2. 申請人只可選擇以下第5或6條業績花紅財務計劃或季度花紅財務預支計劃的其中一項</p>
+            <p>1.3. 本公司對修訂計劃細則及／或任何時候終止此計劃有唯一及絕對的決定權</p>
+          </div>
+        </section>
 
-      <div className="p-4 bg-slate-50 rounded-lg text-[10px] text-slate-500 italic">
-        * 以上內容節選自《全民財務預支計劃之計劃條文》(2025-07版) 第1頁。
+        <section>
+          <h2 className="font-bold mb-1">2. 款項的性質</h2>
+          <div className="pl-4 space-y-0.5">
+            <p>任何及所有財務款項包括但不限於每月預支、季度花紅及業績花紅均屬於貸款款項。所有有關財務款項或貸款款項會按照下列的條款及細則批核予代理人：</p>
+            <div className="pl-4">
+              <p>a) 此財務計劃；</p>
+              <p>b) 貸款協議;</p>
+              <p>c) 代理協議; 及</p>
+              <p>d) 其他由公司不時修訂之適用的服務條款</p>
+            </div>
+            <p className="mt-2">保誠保險有限公司及其受托人（「公司」）對任何有關之財務款項或貸款有絕對的酌情權</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="font-bold mb-1">3. 加簽／批核</h2>
+          <div className="pl-4">
+            <p>所有申請必須經由相關上線經理加簽，並經公司批核</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="font-bold mb-1">4. 佣金扣減</h2>
+          <div className="pl-4 space-y-0.5">
+            <p>4.1. 不設佣金扣減。受公司不時修訂之條款及細則約束，賺取之佣金將100%全數發放</p>
+            <p>4.2. 其他報酬福利按公司不時修訂的代理人條款細則而定</p>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="font-bold mb-1">5. 全民財務預支計劃－業績花紅財務計劃（業績花紅“PB”)（計劃編號：T120）</h2>
+          <div className="pl-4 space-y-2">
+            <p>5.1. 代理人如達到下表對數要求，可獲取業績花紅：</p>
+            
+            <div className="mt-4">
+              <h3 className="font-bold mb-2">業績花紅第一部份</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-[10px] border-collapse border border-slate-900 text-center">
+                  <thead className="bg-slate-50 font-bold">
+                    <tr>
+                      <th className="border border-slate-900 p-1">對數期</th>
+                      <th className="border border-slate-900 p-1">PB 級別</th>
+                      <th className="border border-slate-900 p-1">淨銷售額<br/>Net Sales Credit (港幣)</th>
+                      <th className="border border-slate-900 p-1">H&P<br/>(港幣)</th>
+                      <th className="border border-slate-900 p-1">淨保單數目</th>
+                      <th className="border border-slate-900 p-1">續保率</th>
+                      <th className="border border-slate-900 p-1">花紅金額<br/>(港幣)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { l: '(a)', s: '>=520,000 但 <650,000', hp: '>=78,000', b: '60,000' },
+                      { l: '(b)', s: '>=650,000 但 <910,000', hp: '>=97,500', b: '80,000' },
+                      { l: '(c)', s: '>=910,000 但 <1,300,000', hp: '>=136,500', b: '120,000' },
+                      { l: '(d)', s: '>=1,300,000 但 <1,950,000', hp: '>=195,000', b: '180,000' },
+                      { l: '(e)', s: '>=1,950,000', hp: '>=292,500', b: '270,000' }
+                    ].map((r, i) => (
+                      <tr key={i}>
+                        {i === 0 && <td rowSpan={5} className="border border-slate-900 p-1">第 1 至 12 個合<br/>約月份</td>}
+                        <td className="border border-slate-900 p-1">{r.l}</td>
+                        <td className="border border-slate-900 p-1">{r.s}</td>
+                        <td className="border border-slate-900 p-1">{r.hp}</td>
+                        {i === 0 && <td rowSpan={5} className="border border-slate-900 p-1">>=20</td>}
+                        {i === 0 && <td rowSpan={5} className="border border-slate-900 p-1">>=85%</td>}
+                        <td className="border border-slate-900 p-1">{r.b}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <h3 className="font-bold mb-2">業績花紅第二部份</h3>
+              <div className="overflow-x-auto">
+                <table className="w-full text-[10px] border-collapse border border-slate-900 text-center">
+                  <thead className="bg-slate-50 font-bold">
+                    <tr>
+                      <th className="border border-slate-900 p-1">對數期</th>
+                      <th className="border border-slate-900 p-1">PB 級別</th>
+                      <th className="border border-slate-900 p-1">淨銷售額<br/>Net Sales Credit (港幣)</th>
+                      <th className="border border-slate-900 p-1">H&P<br/>(港幣)</th>
+                      <th className="border border-slate-900 p-1">淨保单数目</th>
+                      <th className="border border-slate-900 p-1">續保率</th>
+                      <th className="border border-slate-900 p-1">花紅金額<br/>(港幣)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { l: '(a)', s: '>=520,000 但 <650,000', hp: '>=78,000', b: '60,000' },
+                      { l: '(b)', s: '>=650,000 但 <910,000', hp: '>=97,500', b: '80,000' },
+                      { l: '(c)', s: '>=910,000 但 <1,300,000', hp: '>=136,500', b: '120,000' },
+                      { l: '(d)', s: '>=1,300,000 但 <1,950,000', hp: '>=195,000', b: '180,000' },
+                      { l: '(e)', s: '>=1,950,000', hp: '>=292,500', b: '270,000' }
+                    ].map((r, i) => (
+                      <tr key={i}>
+                        {i === 0 && <td rowSpan={5} className="border border-slate-900 p-1">第 13 至 24 個<br/>合約月份</td>}
+                        <td className="border border-slate-900 p-1">{r.l}</td>
+                        <td className="border border-slate-900 p-1">{r.s}</td>
+                        <td className="border border-slate-900 p-1">{r.hp}</td>
+                        {i === 0 && <td rowSpan={5} className="border border-slate-900 p-1">>=20</td>}
+                        {i === 0 && <td rowSpan={5} className="border border-slate-900 p-1">>=85%</td>}
+                        <td className="border border-slate-900 p-1">{r.b}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <p className="mt-4">5.2. 業績花紅（如有）將根據H&P對數要求及淨保單數目要求達標情況按以下百分比發放：</p>
+            
+            <div className="mt-2">
+              <table className="w-full text-[10px] border-collapse border border-slate-900 text-center">
+                <thead className="bg-slate-50 font-bold">
+                  <tr>
+                    <th className="border border-slate-900 p-1">H&P 對數要求</th>
+                    <th className="border border-slate-900 p-1">淨保單數目要求</th>
+                    <th className="border border-slate-900 p-1">業績花紅發放比例</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td className="border border-slate-900 p-1">達標</td><td className="border border-slate-900 p-1">達標</td><td className="border border-slate-900 p-1">100%</td></tr>
+                  <tr><td className="border border-slate-900 p-1">未達標</td><td className="border border-slate-900 p-1">達標</td><td className="border border-slate-900 p-1">80%</td></tr>
+                  <tr><td className="border border-slate-900 p-1">達標</td><td className="border border-slate-900 p-1">未達標</td><td className="border border-slate-900 p-1">50%</td></tr>
+                  <tr><td className="border border-slate-900 p-1">未達標</td><td className="border border-slate-900 p-1">未達標</td><td className="border border-slate-900 p-1">40%</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div className="mt-12 pt-4 border-t border-slate-300 flex justify-between items-end text-[9px] text-slate-500 italic">
+        <div>全民財務預支計劃之計劃條文（2025-07 版）</div>
+        <div>第 1 頁，共 4 頁</div>
       </div>
     </div>
   );
@@ -200,8 +290,8 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
                   返回摘要
                 </button>
               </div>
-              <div className="flex-1 overflow-y-auto p-6 md:p-10 hide-scrollbar bg-slate-50">
-                <div className="bg-white p-6 md:p-12 rounded-2xl md:rounded-[32px] shadow-xl border border-slate-200 mx-auto max-w-2xl min-h-full">
+              <div className="flex-1 overflow-y-auto p-4 md:p-10 hide-scrollbar bg-slate-100">
+                <div className="bg-white p-6 md:p-12 rounded-xl md:rounded-[32px] shadow-xl border border-slate-200 mx-auto max-w-2xl min-h-full">
                   {plan.id === 'T120' ? t120Source : (
                     <div className="text-center py-20 text-slate-400 font-medium">
                       该计划的源文档正在数字化中，请咨询您的招募经理获取纸质版。

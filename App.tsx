@@ -4,6 +4,11 @@ import { FinancialPlan, ViewType } from './types';
 import PlanCard from './components/PlanCard';
 import PlanDetails from './components/PlanDetails';
 import Quiz from './components/Quiz';
+import AdvisorChat from './components/AdvisorChat';
+
+// Use a simple root-relative string for the background image.
+// This is the most compatible way to reference static assets in the browser.
+const bgUrl = '/background.png';
 
 const App: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<FinancialPlan | null>(null);
@@ -61,7 +66,7 @@ const App: React.FC = () => {
           {/* Header Background Image */}
           <div 
             className="absolute inset-0 pointer-events-none overflow-hidden select-none bg-cover bg-center opacity-80"
-            style={{ backgroundImage: "url('background.png')" }}
+            style={{ backgroundImage: `url(${bgUrl})` }}
           />
 
           <div className="max-w-7xl mx-auto text-center relative z-10">
@@ -164,6 +169,8 @@ const App: React.FC = () => {
 
       {selectedPlan && <PlanDetails plan={selectedPlan} onClose={() => setSelectedPlan(null)} />}
       
+      <AdvisorChat />
+
       <footer className="py-8 bg-white border-t border-slate-100 mt-auto">
         <div className="max-w-7xl mx-auto px-6">
            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">

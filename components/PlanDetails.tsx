@@ -15,18 +15,17 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
   useEffect(() => {
     const loadAndParseMarkdown = async () => {
       try {
-        // 在浏览器环境中，直接使用 fetch 获取根目录下的 markdown 文件
+        // Fetching the markdown file from the root.
         const response = await fetch('/v013_v014.md');
         if (!response.ok) {
           throw new Error(`Failed to fetch markdown: ${response.status}`);
         }
         const text = await response.text();
-        // 使用 marked 将 markdown 字符串解析为 HTML
         const html = await marked.parse(text);
         setHtmlContent(html);
       } catch (error) {
         console.error("Markdown loading error:", error);
-        setHtmlContent('<p class="text-red-500 font-bold p-4">无法加载源文件，请联系管理员或稍后重试。</p>');
+        setHtmlContent('<p class="text-red-500 font-bold p-4">无法加载源文件内容，请稍后重试或联系招募经理。</p>');
       }
     };
 
@@ -34,7 +33,7 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
   }, []);
 
   const handleViewSource = () => {
-    // Determine which plans have detailed documentation available
+    // Only show source for plans that are documented in the md file
     if (plan.id === 'V103' || plan.id === 'V104' || plan.id === 'V106') {
       setShowSource(true);
     } else {
@@ -51,7 +50,6 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
         className="bg-white w-full max-w-4xl max-h-[90vh] overflow-hidden rounded-[40px] shadow-2xl relative flex flex-col animate-in zoom-in-95 duration-300"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Header */}
         <div className="px-8 py-6 flex justify-between items-center border-b border-slate-50">
           <div className="flex items-center gap-4">
             <span className="text-lg font-bold text-slate-500">{plan.id}</span>
@@ -62,11 +60,8 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
           </button>
         </div>
 
-        {/* Content Container */}
         <div className="flex-1 relative overflow-hidden flex flex-col">
-          {/* Main Plan Details Summary View */}
           <div className={`flex-1 overflow-y-auto p-8 space-y-8 hide-scrollbar transition-opacity duration-300 ${showSource ? 'opacity-0' : 'opacity-100'}`}>
-            {/* Top Grid: Audience & Qualification */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-[#f8faff] p-6 rounded-3xl border border-blue-50">
                 <div className="flex items-center gap-3 mb-4 text-[#3b66f5] font-bold">
@@ -84,7 +79,6 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
               </div>
             </div>
 
-            {/* Note Area: 注意要点 */}
             {plan.note && (
               <div className="bg-[#fffdf2] p-6 rounded-2xl border border-[#fef3c7] flex gap-4">
                 <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center shrink-0 border border-[#f59e0b]">
@@ -97,14 +91,12 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
               </div>
             )}
 
-            {/* Section: 计划详解 */}
             <div className="space-y-6 pt-4">
               <div className="flex items-center gap-2 mb-6 text-slate-800">
                 <Icons.Briefcase className="w-6 h-6 text-blue-600" />
                 <h3 className="text-xl font-extrabold">计划详解</h3>
               </div>
 
-              {/* Funding Item */}
               <div className="flex gap-5">
                 <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0 text-blue-600">
                   <Icons.BadgeDollarSign className="w-6 h-6" />
@@ -119,7 +111,6 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
                 </div>
               </div>
 
-              {/* Performance Item */}
               <div className="flex gap-5">
                 <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center shrink-0 text-orange-600">
                   <Icons.Bot className="w-6 h-6" />
@@ -134,7 +125,6 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
                 </div>
               </div>
 
-              {/* Clawback Item - Special Red Box */}
               <div className="flex gap-5">
                 <div className="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center shrink-0 text-red-600">
                   <Icons.ShieldAlert className="w-6 h-6" />
@@ -155,7 +145,6 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
             </div>
           </div>
 
-          {/* Source Document Viewer Overlay - Rendered Markdown */}
           {showSource && (
             <div className="absolute inset-0 z-20 bg-slate-50 flex flex-col animate-in slide-in-from-right duration-300">
               <div className="px-8 py-4 bg-white border-b border-slate-200 flex justify-between items-center shadow-sm relative z-10">
@@ -182,7 +171,6 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
           )}
         </div>
 
-        {/* Footer with two buttons */}
         <div className="px-8 py-6 bg-slate-50 border-t border-slate-100 flex justify-between items-center">
           <button 
             onClick={handleViewSource}

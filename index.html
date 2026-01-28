@@ -27,7 +27,7 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            opacity: 0.03; /* 50% transparency relative to white often looks best around 0.03-0.05 for watermarks, but for exactly 50% of the visual black intensity on white: */
+            opacity: 0.5; /* 50% opacity as requested */
             pointer-events: none;
             z-index: -1;
         }
@@ -54,6 +54,7 @@
     "react": "https://esm.sh/react@^19.2.4",
     "react/": "https://esm.sh/react@^19.2.4/",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "vite": "https://esm.sh/vite@^7.3.1",
     "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
   }
 }
@@ -61,5 +62,6 @@
 </head>
 <body class="text-slate-900">
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>

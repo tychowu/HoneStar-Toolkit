@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { PLANS, Icons } from '../constants';
 import { QuizState, FinancialPlan } from '../types';
@@ -72,7 +73,6 @@ const Quiz: React.FC<QuizProps> = ({ onComplete, onCancel }) => {
   };
 
   const calculateResult = (finalState: QuizState) => {
-    // Basic recommendation logic
     let recommended: FinancialPlan;
 
     if (finalState.degree === 'master' && finalState.income === 'high') {
@@ -91,32 +91,32 @@ const Quiz: React.FC<QuizProps> = ({ onComplete, onCancel }) => {
   const currentStep = steps[step - 1];
 
   return (
-    <div className="max-w-xl mx-auto py-12 px-6 bg-white rounded-3xl shadow-sm border border-slate-100 animate-in fade-in slide-in-from-bottom-4">
-      <div className="flex justify-between items-center mb-8">
+    <div className="max-w-xl mx-auto p-6 md:p-8 bg-white rounded-3xl shadow-sm border border-slate-100 animate-in fade-in slide-in-from-bottom-4">
+      <div className="flex justify-between items-center mb-6 md:mb-8">
         <div className="flex gap-1">
           {steps.map(s => (
             <div 
               key={s.id} 
-              className={`h-1.5 w-8 rounded-full transition-all duration-500 ${s.id <= step ? 'bg-blue-600' : 'bg-slate-100'}`}
+              className={`h-1.5 w-6 md:w-8 rounded-full transition-all duration-500 ${s.id <= step ? 'bg-blue-600' : 'bg-slate-100'}`}
             />
           ))}
         </div>
-        <button onClick={onCancel} className="text-slate-400 hover:text-slate-600">
+        <button onClick={onCancel} className="p-2 text-slate-400 hover:text-slate-600 transition-colors">
           <Icons.X className="w-5 h-5" />
         </button>
       </div>
 
-      <h2 className="text-2xl font-bold text-slate-900 mb-2">{currentStep.question}</h2>
-      <p className="text-slate-500 text-sm mb-8">请根据您的真实情况选择，以便我们为您推荐最合适的计划。</p>
+      <h2 className="text-xl md:text-2xl font-bold text-slate-900 mb-2">{currentStep.question}</h2>
+      <p className="text-slate-500 text-xs md:text-sm mb-6 md:mb-8">请根据您的真实情况选择，以便我们推荐最合适的计划。</p>
 
-      <div className="space-y-4">
+      <div className="space-y-3 md:space-y-4">
         {currentStep.options.map((opt, idx) => (
           <button
             key={idx}
             onClick={() => handleSelect(opt.value)}
-            className="w-full text-left p-5 rounded-2xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50/30 hover:shadow-md transition-all group flex items-center justify-between"
+            className="w-full text-left p-4 md:p-5 rounded-xl md:rounded-2xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50/30 hover:shadow-md transition-all group flex items-center justify-between active:scale-[0.98]"
           >
-            <span className="font-medium text-slate-700 group-hover:text-blue-700">{opt.label}</span>
+            <span className="font-medium text-slate-700 group-hover:text-blue-700 text-sm md:text-base">{opt.label}</span>
             <Icons.ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" />
           </button>
         ))}
@@ -124,7 +124,7 @@ const Quiz: React.FC<QuizProps> = ({ onComplete, onCancel }) => {
 
       <button 
         onClick={() => step > 1 && setStep(step - 1)}
-        className={`mt-8 text-sm font-bold text-slate-400 hover:text-slate-600 flex items-center gap-1 ${step === 1 ? 'invisible' : ''}`}
+        className={`mt-6 md:mt-8 text-xs md:text-sm font-bold text-slate-400 hover:text-slate-600 flex items-center gap-1 transition-colors ${step === 1 ? 'invisible' : ''}`}
       >
         <Icons.ChevronRight className="w-4 h-4 rotate-180" />
         返回上一步

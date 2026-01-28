@@ -4,11 +4,6 @@ import { FinancialPlan, ViewType } from './types';
 import PlanCard from './components/PlanCard';
 import PlanDetails from './components/PlanDetails';
 import Quiz from './components/Quiz';
-import AdvisorChat from './components/AdvisorChat';
-
-// Use a simple root-relative string for the background image.
-// This is the most compatible way to reference static assets in the browser.
-const bgUrl = '/background.png';
 
 const App: React.FC = () => {
   const [selectedPlan, setSelectedPlan] = useState<FinancialPlan | null>(null);
@@ -30,13 +25,13 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fafbfc]">
+    <div className="min-h-screen flex flex-col">
       {/* Navigation Header */}
-      <nav className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-100 shadow-sm">
+      <nav className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center text-white p-1 shadow-lg shadow-blue-200">
-              <Icons.Logo className="w-7 h-7" />
+            <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center text-white p-1.5 shadow-lg shadow-blue-200">
+              <Icons.Logo className="w-full h-full" />
             </div>
             <div className="flex flex-col">
               <span className="font-bold text-slate-900 tracking-tight leading-none text-base">诚星招募 Pro</span>
@@ -62,16 +57,15 @@ const App: React.FC = () => {
 
       {/* Hero Section */}
       {view !== 'QUIZ' && (
-        <header className="relative pt-24 pb-16 px-6 bg-white overflow-hidden border-b border-slate-50">
-          {/* Header Background Image */}
-          <div 
-            className="absolute inset-0 pointer-events-none overflow-hidden select-none bg-cover bg-center opacity-80"
-            style={{ backgroundImage: `url(${bgUrl})` }}
-          />
+        <header className="relative pt-20 pb-12 px-6 overflow-hidden">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] opacity-[0.03] pointer-events-none z-0">
+            <Icons.Logo className="w-full h-full text-slate-900" />
+          </div>
 
           <div className="max-w-7xl mx-auto text-center relative z-10">
+            {/* Updated badge: text-sm (increased size) and 2026 title */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-sm font-bold uppercase tracking-widest mb-6 border border-blue-100 animate-pulse">
-              2026 财务计划选择器
+              2026财务计划选择器
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 tracking-tight leading-tight">
               开启您的<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">财富管理事业</span>
@@ -80,7 +74,7 @@ const App: React.FC = () => {
               选择一份支持，更选择一个未来。通过我们的智能工具，快速匹配最符合您背景的财务资助计划。
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
               <button 
                 onClick={() => setView('QUIZ')}
                 className="w-full sm:w-auto px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold shadow-xl shadow-blue-100 hover:bg-blue-700 hover:-translate-y-0.5 active:scale-95 transition-all flex items-center justify-center gap-2"
@@ -106,8 +100,8 @@ const App: React.FC = () => {
         </header>
       )}
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-6 flex-grow py-12">
+      {/* Main Content - Updated with dynamic grid columns */}
+      <main className="max-w-7xl mx-auto px-6 relative z-10 flex-grow">
         {view === 'QUIZ' ? (
           <Quiz onComplete={handleQuizComplete} onCancel={() => setView('GRID')} />
         ) : view === 'GRID' ? (
@@ -129,7 +123,7 @@ const App: React.FC = () => {
             <table className="w-full min-w-[1000px] text-left border-collapse">
               <thead>
                 <tr className="bg-slate-50 border-b border-slate-100">
-                  <th className="p-6 text-sm font-bold text-slate-900 sticky left-0 bg-slate-50 z-10">属性字段</th>
+                  <th className="p-6 text-sm font-bold text-slate-900 sticky left-0 bg-slate-50 z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">属性字段</th>
                   {PLANS.map(p => (
                     <th key={p.id} className="p-6 text-sm font-bold text-slate-900 border-l border-slate-100 min-w-[240px]">
                       <div className="flex items-center gap-2">
@@ -142,24 +136,24 @@ const App: React.FC = () => {
               </thead>
               <tbody className="text-sm">
                 <tr className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
-                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10">受众定位</td>
-                  {PLANS.map(p => <td key={p.id} className="p-6 text-slate-600 border-l border-slate-50">{p.audience}</td>)}
+                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">受众定位</td>
+                  {PLANS.map(p => <td key={p.id} className="p-6 text-slate-600 leading-relaxed border-l border-slate-50">{p.audience}</td>)}
                 </tr>
                 <tr className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
-                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10">准入门槛</td>
-                  {PLANS.map(p => <td key={p.id} className="p-6 text-slate-600 border-l border-slate-50 whitespace-pre-line">{p.qualification}</td>)}
+                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">准入门槛</td>
+                  {PLANS.map(p => <td key={p.id} className="p-6 text-slate-600 leading-relaxed border-l border-slate-50 whitespace-pre-line">{p.qualification}</td>)}
                 </tr>
                 <tr className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
-                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10">财务资助</td>
-                  {PLANS.map(p => <td key={p.id} className="p-6 text-slate-600 border-l border-slate-50 whitespace-pre-line">{p.details.funding}</td>)}
+                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">财务资助</td>
+                  {PLANS.map(p => <td key={p.id} className="p-6 text-slate-600 leading-relaxed border-l border-slate-50 whitespace-pre-line">{p.details.funding}</td>)}
                 </tr>
                 <tr className="border-b border-slate-50 hover:bg-slate-50/50 transition-colors">
-                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10">业绩要求</td>
-                  {PLANS.map(p => <td key={p.id} className="p-6 text-slate-600 border-l border-slate-50 whitespace-pre-line">{p.details.performance}</td>)}
+                  <td className="p-6 font-bold text-slate-700 sticky left-0 bg-white z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">业绩要求</td>
+                  {PLANS.map(p => <td key={p.id} className="p-6 text-slate-600 leading-relaxed border-l border-slate-50 whitespace-pre-line">{p.details.performance}</td>)}
                 </tr>
                 <tr>
-                  <td className="p-6 font-bold text-blue-700 sticky left-0 bg-blue-50/30 z-10">风险提示</td>
-                  {PLANS.map(p => <td key={p.id} className="p-6 text-blue-600 font-medium border-l border-slate-50 bg-blue-50/10 whitespace-pre-line">{p.details.clawback}</td>)}
+                  <td className="p-6 font-bold text-blue-700 sticky left-0 bg-blue-50/30 z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">风险提示</td>
+                  {PLANS.map(p => <td key={p.id} className="p-6 text-blue-600 font-medium leading-relaxed border-l border-slate-50 bg-blue-50/10 whitespace-pre-line">{p.details.clawback}</td>)}
                 </tr>
               </tbody>
             </table>
@@ -167,11 +161,11 @@ const App: React.FC = () => {
         )}
       </main>
 
+      {/* Floating UI */}
       {selectedPlan && <PlanDetails plan={selectedPlan} onClose={() => setSelectedPlan(null)} />}
       
-      <AdvisorChat />
-
-      <footer className="py-8 bg-white border-t border-slate-100 mt-auto">
+      {/* Footer Cleanup: Removed logo/title, update year, ensure low height */}
+      <footer className="mt-auto py-8 border-t border-slate-100 bg-white/80 backdrop-blur-sm relative z-10">
         <div className="max-w-7xl mx-auto px-6">
            <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="text-slate-400 text-xs font-medium">

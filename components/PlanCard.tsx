@@ -17,7 +17,7 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onClick }) => {
       case 'D123': return 'from-purple-50 to-white';
       case 'V104': return 'from-indigo-50 to-white';
       case 'D119': return 'from-amber-50 to-white';
-      case 'T120': return 'from-pink-50 to-white';
+      case 'T120': return 'from-rose-50 to-white';
       default: return 'from-slate-50 to-white';
     }
   };

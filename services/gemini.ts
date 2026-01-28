@@ -1,3 +1,4 @@
+
 import { GoogleGenAI } from "@google/genai";
 import { PLANS } from "../constants";
 
@@ -15,12 +16,10 @@ const SYSTEM_PROMPT = `你是一个保诚(Prudential)香港诚星区域 @ 星火
 4. 特别强调'追讨/离职机制(Clawback)'是财务计划中必须注意的风险点。
 5. 保持简洁，使用 Markdown 格式。`;
 
-// Fix: Correctly implemented history support for multi-turn conversation
 export async function askAdvisor(message: string, history: { role: 'user' | 'model', parts: { text: string }[] }[] = []) {
   try {
     const chat = ai.chats.create({
       model: 'gemini-3-flash-preview',
-      history: history,
       config: {
         systemInstruction: SYSTEM_PROMPT,
       }

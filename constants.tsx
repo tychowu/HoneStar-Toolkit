@@ -6,7 +6,7 @@ export const PLANS: FinancialPlan[] = [
     id: "V106",
     name: "PRUVenture 叠加计划",
     subtitle: "额外新人津贴叠加包",
-    audience: "新手推荐、最大化首年收益",
+    audience: "新手保护期必备、最大化首年收益",
     qualification: "所有新人（上线经理为A+经理）",
     tag: "新手推荐",
     color: "bg-green-100 text-green-700 ring-green-200",
@@ -26,14 +26,14 @@ export const PLANS: FinancialPlan[] = [
     audience: "躺平族，逐渐被U163替代",
     qualification: "所有新人",
     tag: "经典入门",
-    color: "bg-pink-100 text-pink-700 ring-pink-200",
-    decorColor: "bg-pink-500",
+    color: "bg-rose-100 text-rose-700 ring-rose-200",
+    decorColor: "bg-rose-500",
     note: "有单数要求：大于20张保单（其中H&P医疗及保障类保单占总业绩的15%）。",
     details: {
       desc: "适合对业绩压力较敏感，希望以较低门槛进入行业的代理人。",
       funding: "每年对数，连发两年，每年最高27万；\n1、大于52万业绩，奖赏6万；\n2、大于65万业绩，奖赏8万；\n3、大于91万业绩，奖赏12万；\n4、大于130万业绩，奖赏18万；\n5、大于195万业绩，奖赏27万。\n\n按比例发：\n未达H&P或净保单数，但达到所有其他要求，按比例发：\n■ 未达H&P，已达净保单数，80%\n■ 已达H&P，未达净保单数，50%\n■ H&P或净保单数均未达，40%",
       performance: "有单数要求：大于20张保单\n（其中H&P医疗及保障类保单占总业绩的15%）",
-      clawback: "如下则所有融资立即整笔一次全额偿还：\n■ 不当行为导致协议终止\n■ 36个月内与非保诚的保险或金融机构在香港登记或签任何贷款协议（直接或间接、无论作为雇员/代理/保险经纪 or 牵涉保险销售其他身份）\n■ 出现任何导致新业务申请/签发被拒，致使业务产出不再符合业务产出要求。"
+      clawback: "如下则所有融资立即整笔一次全额偿还：\n■ 不当行为导致协议终止\n■ 36个月内与非保诚的保险或金融机构在香港登记或签任何贷款协议（直接或间接、无论作为雇员/代理/保险经纪或牵涉保险销售其他身份）\n■ 出现任何导致新业务申请/签发被拒，致使业务产出不再符合业务产出要求。"
     }
   },
   {
@@ -126,11 +126,18 @@ export const PLANS: FinancialPlan[] = [
 export const Icons = {
   Logo: ({ className }: { className?: string }) => (
     <svg viewBox="0 0 100 100" fill="currentColor" className={className}>
-      {/* Precisely matching the four-pointed star with a slight central gap and inward-tapered edges */}
-      <path d="M51,5 L51,49 L95,49 C75,45 55,30 51,5 Z" />
-      <path d="M49,5 L49,49 L5,49 C25,45 45,30 49,5 Z" />
-      <path d="M49,95 L49,51 L5,51 C25,55 45,70 49,95 Z" />
-      <path d="M51,95 L51,51 L95,51 C75,55 55,70 51,95 Z" />
+      <path d="M48,5 L48,42 L52,42 L52,5 L50,0 Z" />
+      <path d="M48,5 L38,38 L48,42 Z" opacity="0.8" />
+      <path d="M52,5 L62,38 L52,42 Z" opacity="0.8" />
+      <path d="M48,95 L48,58 L52,58 L52,95 L50,100 Z" />
+      <path d="M48,95 L38,62 L48,58 Z" opacity="0.8" />
+      <path d="M52,95 L62,62 L52,58 Z" opacity="0.8" />
+      <path d="M5,48 L42,48 L42,52 L5,52 L0,50 Z" />
+      <path d="M5,48 L38,38 L42,48 Z" opacity="0.8" />
+      <path d="M5,52 L38,62 L42,52 Z" opacity="0.8" />
+      <path d="M95,48 L58,48 L58,52 L95,52 L100,50 Z" />
+      <path d="M95,48 L62,38 L58,48 Z" opacity="0.8" />
+      <path d="M95,52 L62,62 L58,52 Z" opacity="0.8" />
     </svg>
   ),
   Users: ({ className }: { className?: string }) => (

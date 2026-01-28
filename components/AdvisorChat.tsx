@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Icons } from '../constants';
 import { askAdvisor } from '../services/gemini';
@@ -22,18 +23,10 @@ const AdvisorChat: React.FC = () => {
     
     const userMsg = message;
     setMessage('');
-    
-    // Fix: Capture current chat state to build history for the API call
-    const history = chat.map(m => ({
-      role: m.role,
-      parts: [{ text: m.text }]
-    }));
-
     setChat(prev => [...prev, { role: 'user', text: userMsg }]);
     setIsLoading(true);
 
-    // Fix: Pass history to the advisor service for contextual understanding
-    const response = await askAdvisor(userMsg, history);
+    const response = await askAdvisor(userMsg);
     setChat(prev => [...prev, { role: 'model', text: response || '无法连接到 AI 顾问。' }]);
     setIsLoading(false);
   };
@@ -90,7 +83,7 @@ const AdvisorChat: React.FC = () => {
               onClick={handleSend}
               className="p-2 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-colors"
             >
-              <Icons.ChevronRight className="w-5 h-5 -rotate-90" />
+              <Icons.ChevronRight className="w-5 h-5 rotate-270" />
             </button>
           </div>
         </div>

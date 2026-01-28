@@ -17,7 +17,7 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onClick }) => {
       case 'D123': return 'from-purple-50 to-white';
       case 'V104': return 'from-indigo-50 to-white';
       case 'D119': return 'from-amber-50 to-white';
-      case 'T120': return 'from-slate-50 to-white';
+      case 'T120': return 'from-pink-50 to-white';
       default: return 'from-slate-50 to-white';
     }
   };
@@ -56,8 +56,6 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onClick }) => {
           <span className="line-clamp-2 leading-tight text-xs font-medium">{plan.qualification.split('\n')[0]}...</span>
         </div>
       </div>
-      
-      {/* 移除了底部的“了解详情”文字以缩减高度 */}
     </div>
   );
 };

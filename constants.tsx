@@ -6,9 +6,9 @@ export const PLANS: FinancialPlan[] = [
     id: "V106",
     name: "PRUVenture 叠加计划",
     subtitle: "额外新人津贴叠加包",
-    audience: "新手保护期必备、最大化首年收益",
+    audience: "新手推荐、最大化首年收益",
     qualification: "所有新人（上线经理为A+经理）",
-    tag: "额外加成",
+    tag: "新手推荐",
     color: "bg-green-100 text-green-700 ring-green-200",
     decorColor: "bg-green-500",
     note: "通常作为叠加包使用，需配合主计划（如T120或U163）的业绩要求。",
@@ -26,14 +26,14 @@ export const PLANS: FinancialPlan[] = [
     audience: "躺平族，逐渐被U163替代",
     qualification: "所有新人",
     tag: "经典入门",
-    color: "bg-gray-100 text-gray-700 ring-gray-200",
-    decorColor: "bg-gray-500",
+    color: "bg-pink-100 text-pink-700 ring-pink-200",
+    decorColor: "bg-pink-500",
     note: "有单数要求：大于20张保单（其中H&P医疗及保障类保单占总业绩的15%）。",
     details: {
       desc: "适合对业绩压力较敏感，希望以较低门槛进入行业的代理人。",
       funding: "每年对数，连发两年，每年最高27万；\n1、大于52万业绩，奖赏6万；\n2、大于65万业绩，奖赏8万；\n3、大于91万业绩，奖赏12万；\n4、大于130万业绩，奖赏18万；\n5、大于195万业绩，奖赏27万。\n\n按比例发：\n未达H&P或净保单数，但达到所有其他要求，按比例发：\n■ 未达H&P，已达净保单数，80%\n■ 已达H&P，未达净保单数，50%\n■ H&P或净保单数均未达，40%",
       performance: "有单数要求：大于20张保单\n（其中H&P医疗及保障类保单占总业绩的15%）",
-      clawback: "如下则所有融资立即整笔一次全额偿还：\n■ 不当行为导致协议终止\n■ 36个月内与非保诚的保险或金融机构在香港登记或签任何贷款协议（直接或间接、无论作为雇员/代理/保险经纪或牵涉保险销售其他身份）\n■ 出现任何导致新业务申请/签发被拒，致使业务产出不再符合业务产出要求。"
+      clawback: "如下则所有融资立即整笔一次全额偿还：\n■ 不当行为导致协议终止\n■ 36个月内与非保诚的保险或金融机构在香港登记或签任何贷款协议（直接或间接、无论作为雇员/代理/保险经纪 or 牵涉保险销售其他身份）\n■ 出现任何导致新业务申请/签发被拒，致使业务产出不再符合业务产出要求。"
     }
   },
   {
@@ -42,7 +42,7 @@ export const PLANS: FinancialPlan[] = [
     subtitle: "现金流最强主流选择",
     audience: "平稳续签族",
     qualification: "所有新人\n■ 每月预支1万及以下,无需收入证明\n■ 每月预支1万(不含)~1.5万, 需收入证明(有大学学位可免);\n■ 每月预支≤24个月内年均收入/12",
-    tag: "最受欢迎",
+    tag: "主流选择",
     color: "bg-blue-100 text-blue-700 ring-blue-200",
     decorColor: "bg-blue-500",
     note: "1、预支部分无单数要求;\n2、有对数要求, 不能连续两个月不交单 (以批单算);\n3、2年内离职 (无论原因) 或3年内离职 (未能晋升为高级业务经理), 需退还部分预支。",
@@ -59,7 +59,7 @@ export const PLANS: FinancialPlan[] = [
     subtitle: "高薪优才专属通道",
     audience: "高学历（硕士以上）、高收入、跨行精英",
     qualification: "硕士以上+3年工作经验，或年收入≥100万，18-55岁。",
-    tag: "高端优才",
+    tag: "高端人才",
     color: "bg-purple-100 text-purple-700 ring-purple-200",
     decorColor: "bg-purple-500",
     note: "需展现出符合“高端人才”定义的销售能力，设有季度考核检查点。",
@@ -76,7 +76,7 @@ export const PLANS: FinancialPlan[] = [
     subtitle: "12个月24万起步资助",
     audience: "首次投身保险业，追求系统化成长的新晋精英",
     qualification: "首次入职；大学或以上学历；需全职投入 PRUVenture 学院培训。",
-    tag: "学院派首选",
+    tag: "精英人才",
     color: "bg-teal-100 text-teal-700 ring-teal-200",
     decorColor: "bg-teal-500",
     note: "申请本计划需严格遵守学院的考勤及课程参与要求。",
@@ -93,7 +93,7 @@ export const PLANS: FinancialPlan[] = [
     subtitle: "2年48万预支计划",
     audience: "有管理潜力的资深销售、专业人士",
     qualification: "首次入行；2年+专业经验或学士以上；全职要求。",
-    tag: "精英计划",
+    tag: "董监高首选",
     color: "bg-indigo-100 text-indigo-700 ring-indigo-200",
     decorColor: "bg-indigo-500",
     note: "申请本计划不符合加入“PRUelite”及MDRT相关奖金资格。",
@@ -126,18 +126,11 @@ export const PLANS: FinancialPlan[] = [
 export const Icons = {
   Logo: ({ className }: { className?: string }) => (
     <svg viewBox="0 0 100 100" fill="currentColor" className={className}>
-      <path d="M48,5 L48,42 L52,42 L52,5 L50,0 Z" />
-      <path d="M48,5 L38,38 L48,42 Z" opacity="0.8" />
-      <path d="M52,5 L62,38 L52,42 Z" opacity="0.8" />
-      <path d="M48,95 L48,58 L52,58 L52,95 L50,100 Z" />
-      <path d="M48,95 L38,62 L48,58 Z" opacity="0.8" />
-      <path d="M52,95 L62,62 L52,58 Z" opacity="0.8" />
-      <path d="M5,48 L42,48 L42,52 L5,52 L0,50 Z" />
-      <path d="M5,48 L38,38 L42,48 Z" opacity="0.8" />
-      <path d="M5,52 L38,62 L42,52 Z" opacity="0.8" />
-      <path d="M95,48 L58,48 L58,52 L95,52 L100,50 Z" />
-      <path d="M95,48 L62,38 L58,48 Z" opacity="0.8" />
-      <path d="M95,52 L62,62 L58,52 Z" opacity="0.8" />
+      {/* Precisely matching the four-pointed star with a slight central gap and inward-tapered edges */}
+      <path d="M51,5 L51,49 L95,49 C75,45 55,30 51,5 Z" />
+      <path d="M49,5 L49,49 L5,49 C25,45 45,30 49,5 Z" />
+      <path d="M49,95 L49,51 L5,51 C25,55 45,70 49,95 Z" />
+      <path d="M51,95 L51,51 L95,51 C75,55 55,70 51,95 Z" />
     </svg>
   ),
   Users: ({ className }: { className?: string }) => (
@@ -169,5 +162,8 @@ export const Icons = {
   ),
   Info: ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+  ),
+  FileText: ({ className }: { className?: string }) => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
   )
 };

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { FinancialPlan } from '../types';
 import { Icons } from '../constants';
@@ -53,7 +52,7 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
 
           <div className="space-y-6">
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center shrink-0 text-orange-600">
+              <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center shrink-0 text-blue-600">
                 <Icons.BadgeDollarSign className="w-5 h-5" />
               </div>
               <div>
@@ -72,12 +71,12 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
               </div>
             </div>
 
-            <div className="bg-red-50 p-6 rounded-2xl border border-red-100">
-              <div className="flex items-center gap-3 mb-3 text-red-700 font-bold">
+            <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+              <div className="flex items-center gap-3 mb-3 text-blue-700 font-bold">
                 <Icons.ShieldAlert className="w-5 h-5" />
                 <h4>关键：追讨/离职机制 (Clawback)</h4>
               </div>
-              <p className="text-red-900/80 text-sm leading-relaxed whitespace-pre-line bg-white/50 p-4 rounded-xl">
+              <p className="text-blue-900/80 text-sm leading-relaxed whitespace-pre-line bg-white/50 p-4 rounded-xl">
                 {plan.details.clawback}
               </p>
             </div>
@@ -87,7 +86,7 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
         <div className="p-6 bg-slate-50 border-t border-slate-100 flex justify-end">
           <button 
             onClick={onClose}
-            className="px-8 py-2.5 bg-slate-900 text-white rounded-xl text-sm font-bold hover:bg-slate-800 transition-all active:scale-95"
+            className="px-8 py-2.5 bg-blue-600 text-white rounded-xl text-sm font-bold hover:bg-blue-700 transition-all active:scale-95"
           >
             关闭详情
           </button>

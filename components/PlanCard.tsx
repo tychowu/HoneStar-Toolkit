@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { FinancialPlan } from '../types';
 import { Icons } from '../constants';
@@ -25,7 +24,7 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onClick }) => {
         </span>
       </div>
 
-      <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-red-600 transition-colors">
+      <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
         {plan.name}
       </h3>
       <p className="text-sm text-slate-500 mb-6 font-medium">{plan.subtitle}</p>
@@ -42,7 +41,7 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onClick }) => {
         </div>
       </div>
 
-      <div className="mt-6 pt-4 border-t border-slate-50 flex items-center justify-end gap-1 text-red-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="mt-6 pt-4 border-t border-slate-50 flex items-center justify-end gap-1 text-blue-600 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
         <span>了解详情</span>
         <Icons.ChevronRight className="w-3 h-3" />
       </div>

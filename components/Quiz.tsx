@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { PLANS, Icons } from '../constants';
 import { QuizState, FinancialPlan } from '../types';
@@ -98,7 +97,7 @@ const Quiz: React.FC<QuizProps> = ({ onComplete, onCancel }) => {
           {steps.map(s => (
             <div 
               key={s.id} 
-              className={`h-1.5 w-8 rounded-full transition-all duration-500 ${s.id <= step ? 'bg-red-600' : 'bg-slate-100'}`}
+              className={`h-1.5 w-8 rounded-full transition-all duration-500 ${s.id <= step ? 'bg-blue-600' : 'bg-slate-100'}`}
             />
           ))}
         </div>
@@ -115,10 +114,10 @@ const Quiz: React.FC<QuizProps> = ({ onComplete, onCancel }) => {
           <button
             key={idx}
             onClick={() => handleSelect(opt.value)}
-            className="w-full text-left p-5 rounded-2xl border border-slate-200 hover:border-red-500 hover:bg-red-50/30 hover:shadow-md transition-all group flex items-center justify-between"
+            className="w-full text-left p-5 rounded-2xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50/30 hover:shadow-md transition-all group flex items-center justify-between"
           >
-            <span className="font-medium text-slate-700 group-hover:text-red-700">{opt.label}</span>
-            <Icons.ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-red-500 group-hover:translate-x-1 transition-all" />
+            <span className="font-medium text-slate-700 group-hover:text-blue-700">{opt.label}</span>
+            <Icons.ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-blue-500 group-hover:translate-x-1 transition-all" />
           </button>
         ))}
       </div>

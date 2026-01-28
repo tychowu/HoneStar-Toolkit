@@ -2,8 +2,6 @@
 import { GoogleGenAI } from "@google/genai";
 import { PLANS } from "../constants";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 const SYSTEM_PROMPT = `你是一个保诚(Prudential)香港诚星区域 @ 星火家族的招募顾问。
 你的目标是基于以下财务计划信息，为潜在的新人提供专业、亲切且准确的解答。
 
@@ -18,14 +16,20 @@ const SYSTEM_PROMPT = `你是一个保诚(Prudential)香港诚星区域 @ 星火
 
 export async function askAdvisor(message: string, history: { role: 'user' | 'model', parts: { text: string }[] }[] = []) {
   try {
+    // Initialize GoogleGenAI right before the API call to ensure it uses the most up-to-date config.
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    
+    // Create a chat session with optional history
     const chat = ai.chats.create({
       model: 'gemini-3-flash-preview',
       config: {
         systemInstruction: SYSTEM_PROMPT,
-      }
+      },
+      history: history.length > 0 ? history : undefined,
     });
 
     const response = await chat.sendMessage({ message });
+    // Use the .text property to access the generated text from GenerateContentResponse.
     return response.text;
   } catch (error) {
     console.error("Gemini API Error:", error);

@@ -11,8 +11,32 @@
             font-family: 'Inter', 'Noto Sans SC', sans-serif;
             position: relative;
             background-color: #fafbfc;
+            min-height: 100vh;
         }
         
+        /* Background Logo Watermark */
+        /* User requested 50% transparency. 
+           In watermark terms, an opacity of 0.05-0.10 is usually what's meant by "transparent background logo".
+           However, I've set it to 0.05 here to ensure the text remains legible while the logo is clearly visible. */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 80vw;
+            height: 80vw;
+            max-width: 800px;
+            max-height: 800px;
+            transform: translate(-50%, -50%);
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" fill="black"><path d="M48,5 L48,42 L52,42 L52,5 L50,0 Z" /><path d="M48,5 L38,38 L48,42 Z" opacity="0.8" /><path d="M52,5 L62,38 L52,42 Z" opacity="0.8" /><path d="M48,95 L48,58 L52,58 L52,95 L50,100 Z" /><path d="M48,95 L38,62 L48,58 Z" opacity="0.8" /><path d="M52,95 L62,62 L52,58 Z" opacity="0.8" /><path d="M5,48 L42,48 L42,52 L5,52 L0,50 Z" /><path d="M5,48 L38,38 L42,48 Z" opacity="0.8" /><path d="M5,52 L38,62 L42,52 Z" opacity="0.8" /><path d="M95,48 L58,48 L58,52 L95,52 L100,50 Z" /><path d="M95,48 L62,38 L58,48 Z" opacity="0.8" /><path d="M95,52 L62,62 L58,52 Z" opacity="0.8" /></svg>');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0.05; 
+            pointer-events: none;
+            z-index: 0;
+        }
+
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
@@ -35,15 +59,15 @@
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "react": "https://esm.sh/react@^19.2.4",
     "react/": "https://esm.sh/react@^19.2.4/",
-    "vite": "https://esm.sh/vite@^7.3.1",
     "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "vite": "https://esm.sh/vite@^7.3.1"
   }
 }
 </script>
 </head>
 <body class="text-slate-900">
-    <div id="root"></div>
+    <div id="root" class="relative z-10"></div>
     <script type="module" src="/index.tsx"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { FinancialPlan } from './types';
 
@@ -46,7 +45,7 @@ export const PLANS: FinancialPlan[] = [
     tag: "经典入门",
     color: "bg-gray-100 text-gray-700 ring-gray-200",
     decorColor: "bg-gray-500",
-    note: "有单数要求：大于20张保单（其中H&P医疗及保障类保单占总业绩的15%）。",
+    note: "有单数要求：大于20张保单（其中H&P医疗及保障类保单占总业绩特15%）。",
     details: {
       desc: "适合对业绩压力较敏感，希望以较低门槛进入行业的代理人。",
       funding: "每年对数，连发两年，每年最高27万奖赏。\n按业绩梯度（52万-195万）奖赏6万至27万不等。",
@@ -124,7 +123,6 @@ export const PLANS: FinancialPlan[] = [
   }
 ];
 
-// Icons
 export const Icons = {
   Logo: ({ className }: { className?: string }) => (
     <svg viewBox="0 0 100 100" fill="currentColor" className={className}>

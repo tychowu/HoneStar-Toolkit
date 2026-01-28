@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { FinancialPlan } from './types';
 
@@ -9,7 +8,7 @@ export const PLANS: FinancialPlan[] = [
     subtitle: "额外新人津贴叠加包",
     audience: "新手保护期必备、最大化首年收益",
     qualification: "所有新人（上线经理为A+经理）",
-    tag: "新手推荐",
+    tag: "额外加成",
     color: "bg-green-100 text-green-700 ring-green-200",
     decorColor: "bg-green-500",
     note: "通常作为叠加包使用，需配合主计划（如T120或U163）的业绩要求。",
@@ -24,34 +23,34 @@ export const PLANS: FinancialPlan[] = [
     id: "T120",
     name: "全民财务预支计划—业绩花红",
     subtitle: "稳健起步，阶梯奖励",
-    audience: "大众化选择，2025最新政策",
+    audience: "躺平族，逐渐被U163替代",
     qualification: "所有新人",
     tag: "经典入门",
-    color: "bg-rose-100 text-rose-700 ring-rose-200",
-    decorColor: "bg-rose-500",
-    note: "支付比例受 H&P 对数及净保单数双重考核。最高可获 270,000 HKD 花红。",
+    color: "bg-gray-100 text-gray-700 ring-gray-200",
+    decorColor: "bg-gray-500",
+    note: "有单数要求：大于20张保单（其中H&P医疗及保障类保单占总业绩的15%）。",
     details: {
       desc: "适合对业绩压力较敏感，希望以较低门槛进入行业的代理人。",
-      funding: "业绩花红（PB）分两部分发放：第1-12个月及第13-24个月。\n■ PB (a): 60,000 HKD (业绩 ≥ 52万)\n■ PB (b): 80,000 HKD (业绩 ≥ 65万)\n■ PB (c): 120,000 HKD (业绩 ≥ 91万)\n■ PB (d): 180,000 HKD (业绩 ≥ 130万)\n■ PB (e): 270,000 HKD (业绩 ≥ 195万)",
-      performance: "对数要求：\n1. 净销售额 (Net Sales Credit) ≥ 指定级别门槛\n2. H&P 业绩 ≥ 指定级别门槛\n3. 净保单数目 ≥ 20\n4. 续保率 ≥ 85%",
-      clawback: "发放比例：\n■ 两者达标: 100% | 仅保单达标: 80% \n■ 仅H&P达标: 50% | 两者均未达标: 40%\n\n36个月内离职或加入竞争对手需全额退还。"
+      funding: "每年对数，连发两年，每年最高27万；\n1、大于52万业绩，奖赏6万；\n2、大于65万业绩，奖赏8万；\n3、大于91万业绩，奖赏12万；\n4、大于130万业绩，奖赏18万；\n5、大于195万业绩，奖赏27万。\n\n按比例发：\n未达H&P或净保单数，但达到所有其他要求，按比例发：\n■ 未达H&P，已达净保单数，80%\n■ 已达H&P，未达净保单数，50%\n■ H&P或净保单数均未达，40%",
+      performance: "有单数要求：大于20张保单\n（其中H&P医疗及保障类保单占总业绩的15%）",
+      clawback: "如下则所有融资立即整笔一次全额偿还：\n■ 不当行为导致协议终止\n■ 36个月内与非保诚的保险或金融机构在香港登记或签任何贷款协议（直接或间接、无论作为雇员/代理/保险经纪或牵涉保险销售其他身份）\n■ 出现任何导致新业务申请/签发被拒，致使业务产出不再符合业务产出要求。"
     }
   },
   {
     id: "U163",
-    name: "全民财务预支计划",
+    name: "全民财务预支计划 (月领版)",
     subtitle: "现金流最强主流选择",
-    audience: "IANG/高才/平稳续签族",
-    qualification: "所有新人；IANG 固定预支 15,000/月；普通新人按过往收入核定。",
-    tag: "主流选择",
+    audience: "追求稳定月度现金流的新人",
+    qualification: "所有新人；IANG签证固定预支1.5万；高预支需收入证明或学位。",
+    tag: "最受欢迎",
     color: "bg-blue-100 text-blue-700 ring-blue-200",
     decorColor: "bg-blue-500",
-    note: "结合每月预支(MF)、季度花红(QB)及业绩花红(PB)。首年对数要求为总预支金额的 400%。",
+    note: "预支部分无单数要求，但不能连续两个月不交单。",
     details: {
       desc: "目前市场上的主流选择，平衡了预支收入与业绩压力。",
-      funding: "1. 每月预支(MF): 10,000 或 15,000 HKD (首年)\n2. 季度花红(QB): 30,000 HKD / 季度 (第二年)\n3. 业绩花红(PB): 对标 T120 级表发放",
-      performance: "1. 首年核实点业绩要求：总每月预支金额的 400%\n2. 续保率要求 ≥ 85%\n3. 不能连续2个月无寿险生意\n4. 第二年季度对数要求：总季度花红的 600%",
-      clawback: "未达标扣减：\n■ 业绩达标 ≥ 100%: 发放 100%\n■ 业绩达标 80%~100%: 发放 75%\n■ 业绩达标 60%~80%: 发放 50%\n■ 业绩达标 < 60%: 停止发放"
+      funding: "第一年每月预支（最高1.5万/月）；第二年每季度预支。每年超出业绩部分可对标T120奖赏。",
+      performance: "第一年年业绩要求72万；第二年年业绩要求72万。有严格的月度/季度交单对数要求。",
+      clawback: "2年内离职或3年内未能晋升为高级业务经理，需退还部分预支。"
     }
   },
   {
@@ -60,7 +59,7 @@ export const PLANS: FinancialPlan[] = [
     subtitle: "高薪优才专属通道",
     audience: "高学历（硕士以上）、高收入、跨行精英",
     qualification: "硕士以上+3年工作经验，或年收入≥100万，18-55岁。",
-    tag: "高端人才",
+    tag: "高端优才",
     color: "bg-purple-100 text-purple-700 ring-purple-200",
     decorColor: "bg-purple-500",
     note: "需展现出符合“高端人才”定义的销售能力，设有季度考核检查点。",
@@ -77,7 +76,7 @@ export const PLANS: FinancialPlan[] = [
     subtitle: "12个月24万起步资助",
     audience: "首次投身保险业，追求系统化成长的新晋精英",
     qualification: "首次入职；大学或以上学历；需全职投入 PRUVenture 学院培训。",
-    tag: "精英人才",
+    tag: "学院派首选",
     color: "bg-teal-100 text-teal-700 ring-teal-200",
     decorColor: "bg-teal-500",
     note: "申请本计划需严格遵守学院的考勤及课程参与要求。",
@@ -94,7 +93,7 @@ export const PLANS: FinancialPlan[] = [
     subtitle: "2年48万预支计划",
     audience: "有管理潜力的资深销售、专业人士",
     qualification: "首次入行；2年+专业经验或学士以上；全职要求。",
-    tag: "董监高首选",
+    tag: "精英计划",
     color: "bg-indigo-100 text-indigo-700 ring-indigo-200",
     decorColor: "bg-indigo-500",
     note: "申请本计划不符合加入“PRUelite”及MDRT相关奖金资格。",
@@ -118,7 +117,7 @@ export const PLANS: FinancialPlan[] = [
     details: {
       desc: "为跨行业专业人士提供的转行补偿金，侧重快速进入状态。",
       funding: "基于过往年薪一定比例（20%-50%）计算的一次性大额奖金。",
-      performance: "首6个月或首年完成指定高额业绩以解锁或保留奖金。",
+      performance: "首6个月或首年需完成指定高额业绩以解锁或保留奖金。",
       clawback: "24个月内终止委任或不当行为导致终止，需全额退还 KOB。"
     }
   }
@@ -170,8 +169,5 @@ export const Icons = {
   ),
   Info: ({ className }: { className?: string }) => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-  ),
-  FileText: ({ className }: { className?: string }) => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className}><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
   )
 };

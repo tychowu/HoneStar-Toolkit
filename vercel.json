@@ -1,6 +1,14 @@
 
 {
+  "cleanUrls": true,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/v103-source",
+      "destination": "/v103-source.html"
+    },
+    {
+      "source": "/((?!v103-source).*)",
+      "destination": "/index.html"
+    }
   ]
 }

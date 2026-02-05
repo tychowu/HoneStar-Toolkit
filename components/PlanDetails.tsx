@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { FinancialPlan } from '../types';
 import { Icons } from '../constants';
@@ -14,7 +15,8 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
   const handleViewSource = () => {
     if (plan.id === 'V103' || plan.id === 'V104') {
       // 对 V103 和 V104，打开独立的新页面
-      window.open('/v103-source.html', '_blank');
+      // 使用相对路径，Vercel 配置了 cleanUrls 后，不需要写 .html 后缀
+      window.open('/v103-source', '_blank');
     } else {
       // 其他计划保持原有的浮层逻辑
       setShowSource(true);

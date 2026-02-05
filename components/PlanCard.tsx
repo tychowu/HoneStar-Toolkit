@@ -11,13 +11,13 @@ interface PlanCardProps {
 const PlanCard: React.FC<PlanCardProps> = ({ plan, onClick }) => {
   const getGradient = (id: string) => {
     switch (id) {
-      case 'V106': return 'from-green-50 to-white';
-      case 'V103': return 'from-teal-50 to-white';
-      case 'U163': return 'from-blue-50 to-white';
+      case 'V016': return 'from-emerald-50 to-white';
+      case 'U163': return 'from-amber-50 to-white';
+      case 'T120': return 'from-orange-50 to-white';
       case 'D123': return 'from-purple-50 to-white';
+      case 'V103': return 'from-teal-50 to-white';
       case 'V104': return 'from-indigo-50 to-white';
-      case 'D119': return 'from-amber-50 to-white';
-      case 'T120': return 'from-amber-50 to-white';
+      case 'D119': return 'from-rose-50 to-white';
       default: return 'from-slate-50 to-white';
     }
   };
@@ -25,7 +25,7 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onClick }) => {
   return (
     <div 
       onClick={() => onClick(plan)}
-      className={`group relative bg-gradient-to-bl ${getGradient(plan.id)} rounded-3xl p-6 shadow-sm border border-slate-100 cursor-pointer overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-blue-200/40 hover:-translate-y-2 transition-all duration-500 min-h-[220px]`}
+      className={`group relative bg-gradient-to-bl ${getGradient(plan.id)} rounded-3xl p-6 shadow-sm border border-slate-100 cursor-pointer overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-blue-200/40 hover:-translate-y-2 transition-all duration-500 min-h-[180px]`}
     >
       <div className={`absolute top-0 right-0 w-48 h-48 -mr-16 -mt-16 rounded-full opacity-10 transform group-hover:scale-125 transition-transform duration-700 ${plan.decorColor}`} />
       
@@ -43,17 +43,11 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onClick }) => {
       </h3>
       <p className="text-sm text-slate-500 mb-4 font-medium">{plan.subtitle}</p>
 
-      <div className="space-y-2 relative z-10 mb-6">
+      <div className="mt-auto relative z-10">
         <div className="flex items-start gap-2 text-[13px] text-slate-600">
           <Icons.Users className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
           <span className="line-clamp-1 font-medium">{plan.audience}</span>
         </div>
-      </div>
-      
-      {/* 左下角：打开原文 */}
-      <div className="mt-auto flex items-center gap-2 text-blue-600 font-bold text-sm">
-        <Icons.FileText className="w-4 h-4" />
-        <span>打开原文</span>
       </div>
     </div>
   );

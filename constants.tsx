@@ -8,10 +8,10 @@ export const PLANS: FinancialPlan[] = [
     name: "2025 PRUVenture 津贴计划",
     subtitle: "新人启动基本津贴",
     audience: "初入行新人、寻求稳定启动资金者",
-    qualification: "■ 首次于保监局登记\n■ 经理 (SUM&up) 需为 A+ Leaders Program 毕业生/参与者\n■ 不适用于申请 KOB/Sign-off/Elite 或重入代理",
+    qualification: "• 首次于保监局登记\n• 经理 (SUM&up) 需为 A+ Leaders Program 毕业生/参与者\n• 不适用于申请 KOB/Sign-off/Elite 或重入代理",
     tag: "启动首选",
-    color: "bg-green-100 text-green-700 ring-green-200",
-    decorColor: "bg-green-500",
+    color: "bg-emerald-100 text-emerald-700 ring-emerald-200",
+    decorColor: "bg-emerald-500",
     note: "每月津贴发放期不超过 6 个月，需严格执行每月对数要求。",
     details: {
       desc: "专为新人设计的启动津贴计划，提供为期 6 个月的稳定现金流支持。",
@@ -25,15 +25,15 @@ export const PLANS: FinancialPlan[] = [
     name: "U163 全民财务预支计划",
     subtitle: "现金流最强主流选择",
     audience: "平稳续签族",
-    qualification: "所有新人\n■ 每月预支1万及以下, 无需收入证明\n■ 每月预支1万(不含)~1.5万, 需收入证明(有大学学位可免)\n■ 每月预支 ≤ 24个月内年均收入/12",
+    qualification: "所有新人\n• 每月预支1万及以下, 无需收入证明\n• 每月预支1万(不含)~1.5万, 需收入证明(有大学学位可免)\n• 每月预支 ≤ 24个月内年均收入/12",
     tag: "主流选择",
-    color: "bg-blue-100 text-blue-700 ring-blue-200",
-    decorColor: "bg-blue-500",
+    color: "bg-amber-100 text-amber-700 ring-amber-200",
+    decorColor: "bg-amber-500",
     note: "1、预支部分无单数要求；\n2、有对数要求，不能连续两个月不交单（以批单算）；\n3、2年内离职（无论原因）或3年内离职（未能晋升为高级业务经理），需退还部分预支。",
     details: {
       desc: "目前市场上的主流选择，平衡了预支收入与业绩压力。",
       funding: "1、持IANG签证入职者，固定预支15000/月；\n2、其他新人可申请8000-15000的预支（不高于10000港币的预支不需要收入证明）。",
-      performance: "第一年：月度预支，月度对数：每月预支1.5万（全年18万）；每月业绩要求6万（全年72万）\n\n第二年：季度预支，季度对数：每个季度预支3万（全年12万）；每季度业绩要求18万（全年72万）；\n\n每年超出72万业绩部分，按照T120的奖赏对标，封顶27万奖赏。",
+      performance: "第一年：月度预支，月度对数：每月预支1.5万（全年18万）；每月业绩要求6万（全年72万）\n第二年：季度预支，季度对数：每个季度预支3万（全年12万）；每季度业绩要求18万（全年72万）；\n每年超出72万业绩部分，按照T120的奖赏对标，封顶27万奖赏。",
       clawback: "1、预支部分无单数要求；\n2、有对数要求，不能连续两个月不交单（以批单算）；\n3、2年内离职（无论原因）或3年内离职（未能晋升为高级业务经理），需退还部分预支（具体比例参照合约）。"
     }
   },
@@ -44,14 +44,14 @@ export const PLANS: FinancialPlan[] = [
     audience: "大众化选择，逐渐被U163替代",
     qualification: "所有新人",
     tag: "经典入门",
-    color: "bg-amber-100 text-amber-700 ring-amber-200",
-    decorColor: "bg-amber-500",
+    color: "bg-orange-100 text-orange-700 ring-orange-200",
+    decorColor: "bg-orange-500",
     note: "有单数要求：大于20张保单（其中H&P医疗及保障类保单占总业绩的15%）。",
     details: {
       desc: "适合对业绩压力较敏感，希望以较低门槛进入行业的代理人。",
-      funding: "每年对数，连发两年，每年最高27万；\n1、大于52万业绩，奖赏6万；\n2、大于65万业绩，奖赏8万；\n3、大于91万业绩，奖赏12万；\n4、大于130万业绩，奖赏18万；\n5、大于195万业绩，奖赏27万。\n\n按比例发：\n未达H&P或净保单数，但达到所有其他要求，按比例发：\n■ 未达H&P，已达净保单数，80%\n■ 已达H&P，未达净保单数，50%\n■ H&P或净保单数均未达，40%",
+      funding: "每年对数，连发两年，每年最高27万；\n1、大于52万业绩，奖赏6万；\n2、大于65万业绩，奖赏8万；\n3、大于91万业绩，奖赏12万；\n4、大于130万业绩，奖赏18万；\n5、大于195万业绩，奖赏27万。\n\n按比例发：\n未达H&P或净保单数，但达到所有其他要求，按比例发：\n• 未达H&P，已达净保单数，80%\n• 已达H&P，未达净保单数，50%\n• H&P或净保单数均未达，40%",
       performance: "有单数要求：大于20张保单\n（其中H&P医疗及保障类保单占总业绩的15%）",
-      clawback: "如下则所有融资立即整笔一次全额偿还：\n■ 不当行为导致协议终止\n■ 36个月内离职或签署非保诚服务协议\n■ 业务产出不再符合要求。"
+      clawback: "如下则所有融资立即整笔一次全额偿还：\n• 不当行为导致协议终止\n• 36个月内离职或签署非保诚服务协议\n• 业务产出不再符合要求。"
     }
   },
   {
@@ -59,7 +59,7 @@ export const PLANS: FinancialPlan[] = [
     name: "高端人才融资计划",
     subtitle: "高薪优才专属通道",
     audience: "高学历、高收入、销售精英",
-    qualification: "■ 硕士或以上，至少3年工作经验\n■ 或硕士或以上，最近24个月年均收入≥75万\n■ 24个月内年均收入≥100万，需收入证明\n■ 18-55岁，过往7年未在保诚为顾问",
+    qualification: "• 硕士或以上，至少3年工作经验\n• 或硕士或以上，最近24个月年均收入≥75万\n• 24个月内年均收入≥100万，需收入证明\n• 18-55岁，过往7年未在保诚为顾问",
     tag: "高端人才",
     color: "bg-purple-100 text-purple-700 ring-purple-200",
     decorColor: "bg-purple-500",
@@ -85,7 +85,7 @@ export const PLANS: FinancialPlan[] = [
       desc: "专为顶尖管理人才设计的全面财务计划，侧重管理与业绩双修。",
       funding: "1、定制化的高额预支方案，通常远高于普通计划。\n2、包含月度预支及年度绩效花红（具体金额依据个案审批）。",
       performance: "1、极高的个人业绩指标。\n2、团队管理双重指标：需在指定时间内组建团队并达到团队业绩要求。\n3、必须维持极高的继续率（Persistency Rate）。",
-      clawback: "60个月内协议被终止（严格执行）：\n■ 1~12个月：退100%预支\n■ 13~24个月：退100%预支\n■ 25~35个月：退100%业绩花红\n■ 37~48个月：退部分业绩花红\n\n融资全额偿还触发点：\n(a)不当行为导致终止；\n(b)24个月末前终止委任；\n(c)25-36个月终止且加入竞争对手。"
+      clawback: "60个月内协议被终止（严格执行）：\n• 1~12个月：退100%预支\n• 13~24个月：退100%预支\n• 25~35个月：退100%业绩花红\n• 37~48个月：退部分业绩花红\n\n融资全额偿还触发点：\n(a)不当行为导致终止；\n(b)24个月末前终止委任；\n(c)25-36个月终止且加入竞争对手。"
     }
   },
   {
@@ -93,7 +93,7 @@ export const PLANS: FinancialPlan[] = [
     name: "PRUVenture Elite 全面财务计划",
     subtitle: "资深精英启动支持",
     audience: "一定经验的管理人才、销售人员",
-    qualification: "■ 首次于保监局登记 (银行从业不受此限)\n■ 2年及以上指定工作经验或学士学位以上\n■ 申请人FC/UM, 招募经理UM及以上\n■ 要求全职",
+    qualification: "• 首次于保监局登记 (银行从业不受此限)\n• 2年及以上指定工作经验或学士学位以上\n• 申请人FC/UM, 招募经理UM及以上\n• 要求全职",
     tag: "董监高首选",
     color: "bg-indigo-100 text-indigo-700 ring-indigo-200",
     decorColor: "bg-indigo-500",
@@ -112,8 +112,8 @@ export const PLANS: FinancialPlan[] = [
     audience: "专业背景、高学历、高收入、销售精英",
     qualification: "具备特定专业背景（律师、会计师等）或极高过往收入记录",
     tag: "专业转行",
-    color: "bg-amber-100 text-amber-700 ring-amber-200",
-    decorColor: "bg-amber-500",
+    color: "bg-rose-100 text-rose-700 ring-rose-200",
+    decorColor: "bg-rose-500",
     note: "Kick-off Bonus，如有融资需立即一次全额偿还。",
     details: {
       desc: "为跨行业专业人士提供的转行补偿金，侧重快速进入状态。",

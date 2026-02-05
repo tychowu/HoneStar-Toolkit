@@ -10,13 +10,32 @@ interface PlanDetailsProps {
 
 const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
   const handleOpenSource = () => {
-    if (plan.id === 'V103' || plan.id === 'V104' || plan.id === 'V013' || plan.id === 'V014') {
-      // 直接跳转到用户提供的 Notion PDF 链接
-      const notionUrl = "https://file.notion.so/f/f/fd3b82bd-c955-484f-acb5-006328f96744/77eca08a-ea87-44f5-ae2b-4dcc6b253dd3/V013_V014pdf.pdf?table=block&id=2fe83a27-f113-8036-8367-f959da7d46d0&spaceId=fd3b82bd-c955-484f-acb5-006328f96744&expirationTimestamp=1770422400000&signature=z_jjJuwUB2MtrwP6tbByKpfC55csMTU6NC5AIqbrx-Q&downloadName=V013+V014pdf.pdf";
-      window.open(notionUrl, '_blank');
-    } else {
-      alert(`计划 ${plan.id} 的原始 PDF 文件正在上传中，请稍后再试。`);
+    let notionUrl = "";
+    
+    switch (plan.id) {
+      case 'V016':
+        notionUrl = "https://file.notion.so/f/f/fd3b82bd-c955-484f-acb5-006328f96744/0583277e-a9f3-42e2-8c00-ae3298ac37c8/V016.pdf?table=block&id=2fe83a27-f113-8077-a3cd-cb4ea445fa43&spaceId=fd3b82bd-c955-484f-acb5-006328f96744&expirationTimestamp=1770343200000&signature=T4ZGeqkJVc5lGW87j_Q1ARjta8gUH2_mVFW6ADhCsXE&downloadName=V016.pdf";
+        break;
+      case 'U163':
+      case 'T120':
+        notionUrl = "https://file.notion.so/f/f/fd3b82bd-c955-484f-acb5-006328f96744/b295d8cd-e117-4a9e-847c-38ee70957fdd/T120_U163.pdf?table=block&id=2fe83a27-f113-8026-9b8b-c316637ba7c1&spaceId=fd3b82bd-c955-484f-acb5-006328f96744&expirationTimestamp=1770343200000&signature=tAzAtf9K1ZrVvfArLahdknpHH4YSf6vbdy_fp6XIwvg&downloadName=T120+U163.pdf";
+        break;
+      case 'D123':
+        notionUrl = "https://file.notion.so/f/f/fd3b82bd-c955-484f-acb5-006328f96744/1c44a5fd-3021-49b7-9dc4-f86331947a15/D123.pdf?table=block&id=2fe83a27-f113-80e9-adef-e7e1369b0b1b&spaceId=fd3b82bd-c955-484f-acb5-006328f96744&expirationTimestamp=1770343200000&signature=vwcyo0oe6f7w9EdSLdMnlNE7lC_KIgMjMZKrxjzd1tw&downloadName=D123.pdf";
+        break;
+      case 'V103':
+      case 'V104':
+        notionUrl = "https://file.notion.so/f/f/fd3b82bd-c955-484f-acb5-006328f96744/77eca08a-ea87-44f5-ae2b-4dcc6b253dd3/V013_V014pdf.pdf?table=block&id=2fe83a27-f113-8036-8367-f959da7d46d0&spaceId=fd3b82bd-c955-484f-acb5-006328f96744&expirationTimestamp=1770422400000&signature=z_jjJuwUB2MtrwP6tbByKpfC55csMTU6NC5AIqbrx-Q&downloadName=V013+V014pdf.pdf";
+        break;
+      case 'D119':
+        notionUrl = "https://file.notion.so/f/f/fd3b82bd-c955-484f-acb5-006328f96744/79c0e3de-550b-44e5-997c-f429fb08b46c/D119.pdf?table=block&id=2fe83a27-f113-8013-a020-c7416585e9ca&spaceId=fd3b82bd-c955-484f-acb5-006328f96744&expirationTimestamp=1770343200000&signature=q8mtZCcU-z1NNqKU9vPY1r3xcspcCPNe_PDxLTa6SH4&downloadName=D119.pdf";
+        break;
+      default:
+        alert(`计划 ${plan.id} 的原始 PDF 文件正在上传中，请稍后再试。`);
+        return;
     }
+    
+    window.open(notionUrl, '_blank');
   };
 
   return (
@@ -29,7 +48,7 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="px-6 md:px-8 py-5 md:py-6 flex justify-between items-center border-b border-slate-50">
+        <div className="px-6 md:px-8 py-5 md:py-6 flex justify-between items-center border-b border-slate-50 shrink-0">
           <div className="flex items-center gap-3">
             <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase ${plan.color}`}>{plan.id}</span>
             <h2 className="text-xl md:text-2xl font-extrabold text-slate-800 tracking-tight">{plan.name}</h2>
@@ -40,48 +59,67 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-8 bg-slate-50/30">
+        <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-8 bg-slate-50/10 custom-scrollbar">
+          {/* Top Info Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-              <div className="flex items-center gap-2 mb-3 text-blue-600 font-bold">
+            {/* 受众定位 */}
+            <div className="bg-blue-50/50 p-6 rounded-[24px] border border-blue-100 shadow-sm transition-all hover:shadow-md">
+              <div className="flex items-center gap-2 mb-3 text-blue-700 font-bold">
                 <Icons.Users className="w-5 h-5" />
-                <h3>适合人群</h3>
+                <h3 className="text-sm md:text-base">受众定位</h3>
               </div>
-              <p className="text-slate-600 text-sm leading-relaxed">{plan.audience}</p>
+              <p className="text-slate-700 text-sm leading-relaxed font-medium">{plan.audience}</p>
             </div>
-            <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-              <div className="flex items-center gap-2 mb-3 text-green-600 font-bold">
+            
+            {/* 准入门槛 */}
+            <div className="bg-green-50/50 p-6 rounded-[24px] border border-green-100 shadow-sm transition-all hover:shadow-md">
+              <div className="flex items-center gap-2 mb-3 text-green-700 font-bold">
                 <Icons.CheckCircle className="w-5 h-5" />
-                <h3>申请资格</h3>
+                <h3 className="text-sm md:text-base">准入门槛</h3>
               </div>
-              <p className="text-slate-600 text-sm leading-relaxed whitespace-pre-line">{plan.qualification}</p>
+              <p className="text-slate-700 text-sm leading-relaxed whitespace-pre-line font-medium">{plan.qualification}</p>
             </div>
           </div>
 
-          <div className="space-y-6">
-            <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 text-blue-600">
+          {/* Details Section */}
+          <div className="space-y-6 px-1">
+            {/* 财务资助 */}
+            <div className="flex gap-4 group">
+              <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                 <Icons.BadgeDollarSign className="w-5 h-5" />
               </div>
               <div className="flex-1">
-                <h4 className="font-bold text-slate-800">财务支持</h4>
-                <p className="text-slate-600 text-sm mt-1 whitespace-pre-line leading-relaxed">{plan.details.funding}</p>
+                <h4 className="font-bold text-slate-800">财务资助</h4>
+                <p className="text-slate-600 text-sm mt-1.5 whitespace-pre-line leading-relaxed font-medium">{plan.details.funding}</p>
               </div>
             </div>
-            <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center shrink-0 text-orange-600">
+
+            {/* 业绩要求 */}
+            <div className="flex gap-4 group">
+              <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center shrink-0 text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors">
                 <Icons.Bot className="w-5 h-5" />
               </div>
               <div className="flex-1">
                 <h4 className="font-bold text-slate-800">业绩要求</h4>
-                <p className="text-slate-600 text-sm mt-1 whitespace-pre-line leading-relaxed">{plan.details.performance}</p>
+                <p className="text-slate-600 text-sm mt-1.5 whitespace-pre-line leading-relaxed font-medium">{plan.details.performance}</p>
               </div>
+            </div>
+
+            {/* 风险提示 - 浅红色底色方框 */}
+            <div className="mt-8 bg-[#fff5f5] p-6 rounded-[24px] border border-red-100 shadow-sm transition-all hover:shadow-md group">
+              <div className="flex items-center gap-2 mb-4 text-[#e53e3e] font-bold">
+                <Icons.ShieldAlert className="w-5 h-5" />
+                <h3 className="text-sm md:text-base">风险提示</h3>
+              </div>
+              <p className="text-[#c53030] text-xs md:text-sm leading-relaxed whitespace-pre-line font-medium opacity-90">
+                {plan.details.clawback}
+              </p>
             </div>
           </div>
         </div>
 
         {/* Footer */}
-        <div className="px-6 md:px-8 py-5 border-t border-slate-100 flex justify-between items-center bg-white">
+        <div className="px-6 md:px-8 py-5 border-t border-slate-100 flex justify-between items-center bg-white shrink-0">
           <button 
             onClick={handleOpenSource}
             className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-bold transition-colors text-sm"
@@ -91,7 +129,7 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
           </button>
           <button 
             onClick={onClose}
-            className="px-8 py-3 bg-slate-900 text-white rounded-2xl text-sm font-bold hover:bg-slate-800 transition-all active:scale-95 shadow-lg"
+            className="px-8 py-3 bg-slate-900 text-white rounded-2xl text-sm font-bold hover:bg-slate-800 transition-all active:scale-95 shadow-lg shadow-slate-200"
           >
             返回
           </button>

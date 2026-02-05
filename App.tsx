@@ -80,16 +80,18 @@ const App: React.FC = () => {
               </button>
               
               <div className="relative w-full sm:w-96 group">
+                <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none z-20">
+                  <svg className="w-4 h-4 md:w-5 md:h-5 text-slate-400 group-focus-within:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                </div>
                 <input 
                   type="text" 
                   placeholder="搜索方案关键词..."
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
-                  className="w-full bg-white border border-slate-200 rounded-2xl px-5 py-3.5 md:px-6 md:py-4 pl-12 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 transition-all text-xs md:text-sm font-medium"
+                  className="w-full bg-white border border-slate-200 rounded-2xl py-3.5 md:py-4 pl-12 pr-5 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500/10 focus:border-blue-500 transition-all text-xs md:text-sm font-medium relative z-10"
                 />
-                <svg className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 md:w-5 md:h-5 text-slate-400 group-focus-within:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
               </div>
             </div>
           </div>
@@ -148,8 +150,8 @@ const App: React.FC = () => {
                   {PLANS.map(p => <td key={p.id} className="p-4 md:p-6 text-slate-600 leading-relaxed border-l border-slate-50 whitespace-pre-line">{p.details.performance}</td>)}
                 </tr>
                 <tr>
-                  <td className="p-4 md:p-6 font-bold text-blue-700 sticky left-0 bg-blue-50/30 z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">风险提示</td>
-                  {PLANS.map(p => <td key={p.id} className="p-4 md:p-6 text-blue-600 font-medium leading-relaxed border-l border-slate-50 bg-blue-50/10 whitespace-pre-line">{p.details.clawback}</td>)}
+                  <td className="p-4 md:p-6 font-bold text-red-600 sticky left-0 bg-red-50/30 z-10 shadow-[2px_0_5_rgba(0,0,0,0.02)]">风险提示</td>
+                  {PLANS.map(p => <td key={p.id} className="p-4 md:p-6 text-red-700 font-medium leading-relaxed border-l border-slate-50 bg-red-50/10 whitespace-pre-line">{p.details.clawback}</td>)}
                 </tr>
               </tbody>
             </table>

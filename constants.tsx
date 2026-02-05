@@ -33,7 +33,7 @@ export const PLANS: FinancialPlan[] = [
     details: {
       desc: "目前市场上的主流选择，平衡了预支收入与业绩压力。",
       funding: "1、持IANG签证入职者，固定预支15000/月；\n2、其他新人可申请8000-15000的预支（不高于10000港币的预支不需要收入证明）。",
-      performance: "第一年：月度预支，月度对数：每月预支1.5万（全年18万）；每月业绩要求6万（全年72万）\n第二年：季度预支，季度对数：每个季度预支3万（全年12万）；每季度业绩要求18万（全年72万）；\n每年超出72万业绩部分，按照T120的奖赏对标，封顶27万奖赏。",
+      performance: "第一年：月度预支，月度对数：每月预支1.5万（全年18万）；每月业绩要求6万（全年72万）\n\n第二年：季度预支，季度对数：每个季度预支3万（全年12万）；每季度业绩要求18万（全年72万）；\n\n每年超出72万业绩部分，按照T120的奖赏对标，封顶27万奖赏。",
       clawback: "1、预支部分无单数要求；\n2、有对数要求，不能连续两个月不交单（以批单算）；\n3、2年内离职（无论原因）或3年内离职（未能晋升为高级业务经理），需退还部分预支（具体比例参照合约）。"
     }
   },
@@ -126,19 +126,18 @@ export const PLANS: FinancialPlan[] = [
 
 export const Icons = {
   Logo: ({ className }: { className?: string }) => (
-    <svg viewBox="0 0 100 100" fill="currentColor" className={className}>
-      <path d="M48,5 L48,42 L52,42 L52,5 L50,0 Z" />
-      <path d="M48,5 L38,38 L48,42 Z" opacity="0.8" />
-      <path d="M52,5 L62,38 L52,42 Z" opacity="0.8" />
-      <path d="M48,95 L48,58 L52,58 L52,95 L50,100 Z" />
-      <path d="M48,95 L38,62 L48,58 Z" opacity="0.8" />
-      <path d="M52,95 L62,62 L52,58 Z" opacity="0.8" />
-      <path d="M5,48 L42,48 L42,52 L5,52 L0,50 Z" />
-      <path d="M5,48 L38,38 L42,48 Z" opacity="0.8" />
-      <path d="M5,52 L38,62 L42,52 Z" opacity="0.8" />
-      <path d="M95,48 L58,48 L58,52 L95,52 L100,50 Z" />
-      <path d="M95,48 L62,38 L58,48 Z" opacity="0.8" />
-      <path d="M95,52 L62,62 L58,52 Z" opacity="0.8" />
+    <svg viewBox="0 0 100 100" className={className}>
+      <text 
+        x="50" 
+        y="58" 
+        textAnchor="middle" 
+        dominantBaseline="middle" 
+        fontSize="90" 
+        fontFamily="'Ma Shan Zheng', cursive" 
+        fill="white"
+      >
+        诚
+      </text>
     </svg>
   ),
   Users: ({ className }: { className?: string }) => (

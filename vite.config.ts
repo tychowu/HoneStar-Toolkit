@@ -1,7 +1,6 @@
 
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
@@ -11,13 +10,7 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     emptyOutDir: true,
-    sourcemap: false,
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        v103: resolve(__dirname, 'v103-source.html')
-      }
-    }
+    sourcemap: false
   },
   server: {
     host: true,

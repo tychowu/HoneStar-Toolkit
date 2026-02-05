@@ -9,7 +9,6 @@ interface PlanCardProps {
 }
 
 const PlanCard: React.FC<PlanCardProps> = ({ plan, onClick }) => {
-  // 定义基于计划颜色的渐变背景
   const getGradient = (id: string) => {
     switch (id) {
       case 'V106': return 'from-green-50 to-white';
@@ -26,16 +25,14 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onClick }) => {
   return (
     <div 
       onClick={() => onClick(plan)}
-      className={`group relative bg-gradient-to-bl ${getGradient(plan.id)} rounded-3xl p-6 shadow-sm border border-slate-100 cursor-pointer overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-blue-200/40 hover:-translate-y-2 transition-all duration-500`}
+      className={`group relative bg-gradient-to-bl ${getGradient(plan.id)} rounded-3xl p-6 shadow-sm border border-slate-100 cursor-pointer overflow-hidden flex flex-col hover:shadow-2xl hover:shadow-blue-200/40 hover:-translate-y-2 transition-all duration-500 min-h-[220px]`}
     >
-      {/* 装饰圆形 */}
       <div className={`absolute top-0 right-0 w-48 h-48 -mr-16 -mt-16 rounded-full opacity-10 transform group-hover:scale-125 transition-transform duration-700 ${plan.decorColor}`} />
       
       <div className="flex justify-between items-start mb-4 relative z-10">
         <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${plan.color}`}>
           {plan.id}
         </span>
-        {/* 加大标签字号 */}
         <span className="text-xs font-bold text-slate-500 bg-white/80 backdrop-blur-sm px-2.5 py-1 rounded-lg border border-slate-200 shadow-sm">
           {plan.tag}
         </span>
@@ -44,21 +41,20 @@ const PlanCard: React.FC<PlanCardProps> = ({ plan, onClick }) => {
       <h3 className="text-xl font-bold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
         {plan.name}
       </h3>
-      <p className="text-sm text-slate-500 mb-6 font-medium">{plan.subtitle}</p>
+      <p className="text-sm text-slate-500 mb-4 font-medium">{plan.subtitle}</p>
 
-      <div className="mt-auto space-y-3 relative z-10">
-        <div className="flex items-start gap-3 text-sm text-slate-600">
+      <div className="space-y-2 relative z-10 mb-6">
+        <div className="flex items-start gap-2 text-[13px] text-slate-600">
           <Icons.Users className="w-4 h-4 mt-0.5 text-blue-500 shrink-0" />
-          <span className="line-clamp-2 leading-tight font-medium">{plan.audience}</span>
-        </div>
-        
-        <div className="flex items-start gap-3 text-sm text-slate-600">
-          <Icons.CheckCircle className="w-4 h-4 mt-0.5 text-green-500 shrink-0" />
-          <span className="line-clamp-2 leading-tight text-xs font-medium">{plan.qualification.split('\n')[0]}...</span>
+          <span className="line-clamp-1 font-medium">{plan.audience}</span>
         </div>
       </div>
       
-      {/* 移除了底部的“了解详情”文字以缩减高度 */}
+      {/* 左下角：打开原文 */}
+      <div className="mt-auto flex items-center gap-2 text-blue-600 font-bold text-sm">
+        <Icons.FileText className="w-4 h-4" />
+        <span>打开原文</span>
+      </div>
     </div>
   );
 };

@@ -10,32 +10,25 @@ interface PlanDetailsProps {
 
 const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
   const handleOpenSource = () => {
-    let notionUrl = "";
-    
-    switch (plan.id) {
-      case 'V016':
-        notionUrl = "https://file.notion.so/f/f/fd3b82bd-c955-484f-acb5-006328f96744/0583277e-a9f3-42e2-8c00-ae3298ac37c8/V016.pdf?table=block&id=2fe83a27-f113-8077-a3cd-cb4ea445fa43&spaceId=fd3b82bd-c955-484f-acb5-006328f96744&expirationTimestamp=1770343200000&signature=T4ZGeqkJVc5lGW87j_Q1ARjta8gUH2_mVFW6ADhCsXE&downloadName=V016.pdf";
-        break;
-      case 'U163':
-      case 'T120':
-        notionUrl = "https://file.notion.so/f/f/fd3b82bd-c955-484f-acb5-006328f96744/b295d8cd-e117-4a9e-847c-38ee70957fdd/T120_U163.pdf?table=block&id=2fe83a27-f113-8026-9b8b-c316637ba7c1&spaceId=fd3b82bd-c955-484f-acb5-006328f96744&expirationTimestamp=1770343200000&signature=tAzAtf9K1ZrVvfArLahdknpHH4YSf6vbdy_fp6XIwvg&downloadName=T120+U163.pdf";
-        break;
-      case 'D123':
-        notionUrl = "https://file.notion.so/f/f/fd3b82bd-c955-484f-acb5-006328f96744/1c44a5fd-3021-49b7-9dc4-f86331947a15/D123.pdf?table=block&id=2fe83a27-f113-80e9-adef-e7e1369b0b1b&spaceId=fd3b82bd-c955-484f-acb5-006328f96744&expirationTimestamp=1770343200000&signature=vwcyo0oe6f7w9EdSLdMnlNE7lC_KIgMjMZKrxjzd1tw&downloadName=D123.pdf";
-        break;
-      case 'V103':
-      case 'V104':
-        notionUrl = "https://file.notion.so/f/f/fd3b82bd-c955-484f-acb5-006328f96744/77eca08a-ea87-44f5-ae2b-4dcc6b253dd3/V013_V014pdf.pdf?table=block&id=2fe83a27-f113-8036-8367-f959da7d46d0&spaceId=fd3b82bd-c955-484f-acb5-006328f96744&expirationTimestamp=1770422400000&signature=z_jjJuwUB2MtrwP6tbByKpfC55csMTU6NC5AIqbrx-Q&downloadName=V013+V014pdf.pdf";
-        break;
-      case 'D119':
-        notionUrl = "https://file.notion.so/f/f/fd3b82bd-c955-484f-acb5-006328f96744/79c0e3de-550b-44e5-997c-f429fb08b46c/D119.pdf?table=block&id=2fe83a27-f113-8013-a020-c7416585e9ca&spaceId=fd3b82bd-c955-484f-acb5-006328f96744&expirationTimestamp=1770343200000&signature=q8mtZCcU-z1NNqKU9vPY1r3xcspcCPNe_PDxLTa6SH4&downloadName=D119.pdf";
-        break;
-      default:
-        alert(`计划 ${plan.id} 的原始 PDF 文件正在上传中，请稍后再试。`);
-        return;
+    // 优先映射到 docs/ 下的 md 文件名
+    const docMapping: Record<string, string> = {
+      'V016': 'V016.md',
+      'U163': 'U163_T120.md',
+      'T120': 'U163_T120.md',
+      'D123': 'D123.md',
+      'V103': 'V013_V014.md',
+      'V104': 'V013_V014.md',
+      'D119': 'D119.md'
+    };
+
+    const fileName = docMapping[plan.id];
+    if (fileName) {
+      // 在当前应用环境下，我们可以直接打开对应的 md 路径
+      // 如果是在 Vercel 等环境，通常需要通过 window.open 访问静态资源
+      window.open(`/docs/${fileName}`, '_blank');
+    } else {
+      alert(`计划 ${plan.id} 的参考文档正在整理中。`);
     }
-    
-    window.open(notionUrl, '_blank');
   };
 
   return (
@@ -62,7 +55,6 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
         <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-8 bg-slate-50/10 custom-scrollbar">
           {/* Top Info Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* 受众定位 */}
             <div className="bg-blue-50/50 p-6 rounded-[24px] border border-blue-100 shadow-sm transition-all hover:shadow-md">
               <div className="flex items-center gap-2 mb-3 text-blue-700 font-bold">
                 <Icons.Users className="w-5 h-5" />
@@ -71,7 +63,6 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
               <p className="text-slate-700 text-sm leading-relaxed font-medium">{plan.audience}</p>
             </div>
             
-            {/* 准入门槛 */}
             <div className="bg-green-50/50 p-6 rounded-[24px] border border-green-100 shadow-sm transition-all hover:shadow-md">
               <div className="flex items-center gap-2 mb-3 text-green-700 font-bold">
                 <Icons.CheckCircle className="w-5 h-5" />
@@ -81,9 +72,7 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
             </div>
           </div>
 
-          {/* Details Section */}
           <div className="space-y-6 px-1">
-            {/* 财务资助 */}
             <div className="flex gap-4 group">
               <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center shrink-0 text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                 <Icons.BadgeDollarSign className="w-5 h-5" />
@@ -94,7 +83,6 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
               </div>
             </div>
 
-            {/* 业绩要求 */}
             <div className="flex gap-4 group">
               <div className="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center shrink-0 text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors">
                 <Icons.Bot className="w-5 h-5" />
@@ -105,7 +93,6 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
               </div>
             </div>
 
-            {/* 风险提示 - 浅红色底色方框 */}
             <div className="mt-8 bg-[#fff5f5] p-6 rounded-[24px] border border-red-100 shadow-sm transition-all hover:shadow-md group">
               <div className="flex items-center gap-2 mb-4 text-[#e53e3e] font-bold">
                 <Icons.ShieldAlert className="w-5 h-5" />
@@ -125,7 +112,7 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
             className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-bold transition-colors text-sm"
           >
             <Icons.FileText className="w-5 h-5" />
-            <span>打开原文</span>
+            <span>查阅参考文档</span>
           </button>
           <button 
             onClick={onClose}

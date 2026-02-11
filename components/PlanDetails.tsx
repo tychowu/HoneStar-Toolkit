@@ -10,24 +10,22 @@ interface PlanDetailsProps {
 
 const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
   const handleOpenSource = () => {
-    // 优先映射到 docs/ 下的 md 文件名
-    const docMapping: Record<string, string> = {
-      'V016': 'V016.md',
-      'U163': 'U163_T120.md',
-      'T120': 'U163_T120.md',
-      'D123': 'D123.md',
-      'V103': 'V013_V014.md',
-      'V104': 'V013_V014.md',
-      'D119': 'D119.md'
+    // 映射到用户提供的 Google Drive 外部链接
+    const linkMapping: Record<string, string> = {
+      'V016': 'https://drive.google.com/file/d/15YRwANY7HeCW15cd9kTbyQrlPNSFjEXi/view?usp=sharing',
+      'U163': 'https://drive.google.com/file/d/1jtTTCvNqN7nx4KXB8O0j2bEdrxq9y-8-/view?usp=drive_link',
+      'T120': 'https://drive.google.com/file/d/1jtTTCvNqN7nx4KXB8O0j2bEdrxq9y-8-/view?usp=drive_link',
+      'D123': 'https://drive.google.com/file/d/1PwxNAOvXNzWsK9TTNaljjbZQQHD9-xpD/view?usp=drive_link',
+      'V103': 'https://drive.google.com/file/d/1s_TKm_Lx_I1Yf8x_TkGo000xqzbPelIk/view?usp=sharing',
+      'V104': 'https://drive.google.com/file/d/1s_TKm_Lx_I1Yf8x_TkGo000xqzbPelIk/view?usp=sharing',
+      'D119': 'https://drive.google.com/file/d/1qqd62a05GP-cZorTMupaY59nXPX0xGl4/view?usp=sharing'
     };
 
-    const fileName = docMapping[plan.id];
-    if (fileName) {
-      // 在当前应用环境下，我们可以直接打开对应的 md 路径
-      // 如果是在 Vercel 等环境，通常需要通过 window.open 访问静态资源
-      window.open(`/docs/${fileName}`, '_blank');
+    const url = linkMapping[plan.id];
+    if (url) {
+      window.open(url, '_blank');
     } else {
-      alert(`计划 ${plan.id} 的参考文档正在整理中。`);
+      alert(`计划 ${plan.id} 的参考文档链接暂未提供。`);
     }
   };
 
@@ -112,7 +110,7 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
             className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-bold transition-colors text-sm"
           >
             <Icons.FileText className="w-5 h-5" />
-            <span>查阅参考文档</span>
+            <span>打开原文 (Google Drive)</span>
           </button>
           <button 
             onClick={onClose}

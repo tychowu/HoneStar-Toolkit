@@ -12,13 +12,13 @@ const PlanDetails: React.FC<PlanDetailsProps> = ({ plan, onClose }) => {
   const handleOpenSource = () => {
     // 映射到用户提供的 Google Drive 外部链接
     const linkMapping: Record<string, string> = {
-      'V016': 'https://drive.google.com/file/d/15YRwANY7HeCW15cd9kTbyQrlPNSFjEXi/view?usp=sharing',
+      'V016': 'https://drive.google.com/file/d/1MbMoLaiahx01sqxiBl2PoyNLcGHJ-DV1/view?usp=sharing',
       'U163': 'https://drive.google.com/file/d/1jtTTCvNqN7nx4KXB8O0j2bEdrxq9y-8-/view?usp=drive_link',
       'T120': 'https://drive.google.com/file/d/1jtTTCvNqN7nx4KXB8O0j2bEdrxq9y-8-/view?usp=drive_link',
-      'D123': 'https://drive.google.com/file/d/1PwxNAOvXNzWsK9TTNaljjbZQQHD9-xpD/view?usp=drive_link',
-      'V103': 'https://drive.google.com/file/d/1s_TKm_Lx_I1Yf8x_TkGo000xqzbPelIk/view?usp=sharing',
-      'V104': 'https://drive.google.com/file/d/1s_TKm_Lx_I1Yf8x_TkGo000xqzbPelIk/view?usp=sharing',
-      'D119': 'https://drive.google.com/file/d/1qqd62a05GP-cZorTMupaY59nXPX0xGl4/view?usp=sharing'
+      'D123': 'https://drive.google.com/file/d/1cEYbLC-67H4X4WwhdaKmEwv-tQP64RQ4/view?usp=sharing',
+      'V103': 'https://drive.google.com/file/d/1bJDuB_Ve_fx_JqYN5eA0w7D1vtkpWfn9/view?usp=sharing',
+      'V104': 'https://drive.google.com/file/d/1bJDuB_Ve_fx_JqYN5eA0w7D1vtkpWfn9/view?usp=sharing',
+      'D119': 'https://drive.google.com/file/d/1QxZGW8tr9xJS-9foD8Tbx1EG5rp3CKw-/view?usp=sharing'
     };
 
     const url = linkMapping[plan.id];
